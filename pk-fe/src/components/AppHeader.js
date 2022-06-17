@@ -4,7 +4,7 @@ function AppHeader() {
     return (
         <Navbar collapseOnSelect expand="lg" bg="light">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <Image src="https://devfast.us/images/devfast-logo.png" className="logo-img"></Image>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

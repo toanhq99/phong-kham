@@ -1,7 +1,3 @@
-.App {
-    text-align: center;
-}
-
 .App-logo {
     height: 40vmin;
     pointer-events: none;
@@ -43,4 +39,128 @@
 
 .logo-img {
     height: 48px;
+}
+
+.content-steps {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #2f3035;
+    margin-top: 1rem;
+}
+
+
+/* AppHome */
+
+.section-1 {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    background-image: url("https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/dat-kham-online-isofhcare-jpg_0ceb2132_8202_47cc_af61_c1b7a092084d.png");
+    height: 500px;
+}
+
+.wrap-text {
+    gap: 40px;
+}
+
+.section-h1 {
+    width: 45%;
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 56px;
+    white-space: pre-wrap;
+}
+
+.section-h3 {
+    width: 600px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(20, 36, 65);
+}
+
+.ant-row {
+    flex-flow: row wrap;
+    row-gap: 20px !important;
+    margin-left: -4rem;
+    margin-right: -4rem;
+}
+
+.ant-col {
+    text-align: center;
+    height: auto;
+    gap: 16px;
+    position: relative;
+    max-width: 25%;
+    min-height: 1px;
+    flex: 0 0 25%;
+}
+
+.hot-service-item {
+    padding: 16px 16px 24px;
+    background: #ffffff;
+    border-radius: 12px;
+    height: 357px;
+    margin: 0 12px;
+}
+
+.hot-service-item-box {
+    flex-direction: column;
+}
+
+.image {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-box {
+    inset: 0px;
+    box-sizing: border-box;
+}
+
+.image-box-content {
+    visibility: hidden;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 0px;
+    border: none;
+    margin: auto;
+    display: block;
+    width: 0px;
+    height: 0px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+.header {
+    padding-right: 221px;
+}
+
+.container-hot-service {
+    padding-left: 10rem;
+    margin-bottom: 98px;
+    padding-top: 41px;
+}
+
+.body {
+    margin-top: 28px;
+    margin-left: -15px;
+}
+
+.multi-track {
+    list-style: none;
+    flex-direction: row;
+}
+
+.multi-item {
+    width: 370px;
 }
