@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap"
+import { Container, Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
 
 function AppHome() {
@@ -113,12 +113,122 @@ function AppHome() {
                                             </div>
                                         </div>
                                     </li>
-                                    
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+                <Container className="justify-content-center">
+                    <div className="row">
+                        <div className="col col-xs-12 col-sm-8 col-xl-6 w-25">
+                            <div className="w-100 h-100 position-relative d-flex align-items-center">
+                                <div className="py-4 px-3">
+                                    <div className="position-relative align-items-center d-flex justify-content-center logo">
+                                        <img className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" alt="" />
+                                    </div>
+                                    <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
+                                        <h3 className="name">
+                                            <Link to={"/chi-tiet-bac-si/"}>PGS.TS.  Phạm Thị Bích Đào</Link>
+                                        </h3>
+                                        <div className="specializations">Chuyên khoa Tai Mũi Họng </div>
+                                    </div>
+                                    <div className="price-info d-flex justify-content-center align-items-center flex-column ">
+                                        <div className="price-title">Giá khám</div>
+                                        <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">5000000đ</div>
+                                    </div>
+                                    <div className="btn-footer">
+                                        <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card">
+                                            <Link to={"/chi-tiet-bac-si/"}>
+                                                <span>Đặt khám</span>
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col col-lg-3">
+                            <div className="w-100 h-100 position-relative d-flex align-items-center">
+                                <div className="py-4 px-3">
+                                    <div className="position-relative align-items-center d-flex justify-content-center logo">
+                                        <img className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" alt="" />
+                                    </div>
+                                    <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
+                                        <h3 className="name">
+                                            <Link to={"/chi-tiet-bac-si/"}>PGS.TS.  Phạm Thị Bích Đào</Link>
+                                        </h3>
+                                        <div className="specializations">Chuyên khoa Tai Mũi Họng </div>
+                                    </div>
+                                    <div className="price-info d-flex justify-content-center align-items-center flex-column ">
+                                        <div className="price-title">Giá khám</div>
+                                        <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">5000000đ</div>
+
+                                    </div>
+                                    <div className="btn-footer">
+                                        <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card">
+                                            <Link to={"/chi-tiet-bac-si/"}>
+                                                <span>Đặt khám</span>
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col col-lg-3">
+                            <div className="w-100 h-100 position-relative d-flex align-items-center">
+                                <div className="py-4 px-3">
+                                    <div className="position-relative align-items-center d-flex justify-content-center logo">
+                                        <img className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" alt="" />
+                                    </div>
+                                    <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
+                                        <h3 className="name">
+                                            <Link to={"/chi-tiet-bac-si/"}>PGS.TS.  Phạm Thị Bích Đào</Link>
+                                        </h3>
+                                        <div className="specializations">Chuyên khoa Tai Mũi Họng </div>
+                                    </div>
+                                    <div className="price-info d-flex justify-content-center align-items-center flex-column ">
+                                        <div className="price-title">Giá khám</div>
+                                        <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">5000000đ</div>
+
+                                    </div>
+                                    <div className="btn-footer">
+                                        <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card">
+                                            <Link to={"/chi-tiet-bac-si/"}>
+                                                <span>Đặt khám</span>
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col col-lg-3">
+                            <div className="w-100 h-100 position-relative d-flex align-items-center">
+                                <div className="py-4 px-3">
+                                    <div className="position-relative align-items-center d-flex justify-content-center logo">
+                                        <img className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" alt="" />
+                                    </div>
+                                    <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
+                                        <h3 className="name">
+                                            <Link to={"/chi-tiet-bac-si/"}>PGS.TS.  Phạm Thị Bích Đào</Link>
+                                        </h3>
+                                        <div className="specializations">Chuyên khoa Tai Mũi Họng </div>
+                                    </div>
+                                    <div className="price-info d-flex justify-content-center align-items-center flex-column ">
+                                        <div className="price-title">Giá khám</div>
+                                        <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">5000000đ</div>
+                                    </div>
+                                    <div className="btn-footer">
+                                        <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card">
+                                            <Link to={"/chi-tiet-bac-si/"}>
+                                                <span>Đặt khám</span>
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </Container>
             </div>
 
         </div>

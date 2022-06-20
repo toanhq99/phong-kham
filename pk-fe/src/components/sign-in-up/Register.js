@@ -55,18 +55,22 @@ function Register() {
     };
 
     const handleSubmit = (e) => {
+        
         e.preventDefault();
         handleValidation();
-        console.log(username, password, repassword);
+        console.log(username+password+ repassword);
 
         axios
             .post(`${baseURL}`, {
+                id:0,
                 username: username,
                 password: password
             })
             .then((res) => console.log(res))
             .catch((error) => console.log(error)
             );
+
+
     };
 
     return (
@@ -94,7 +98,7 @@ function Register() {
                             <Form.Label>Mật khẩu</Form.Label>
                             <Form.Control
                                 type="password"
-                                id="exampleInputPassword1"
+                                id="exampleInputPassword"
                                 placeholder="Nhập mật khẩu"
                                 onChange={(event) => setPassword(event.target.value)}
                             />

@@ -1,0 +1,58 @@
+import { Container, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+function DoctorInfo() {
+    return (
+        <Container>
+            <div className="flex-row mt-4">
+                <Link to={"/"}>Trang chủ</Link> / Thông tin cá nhân
+            </div>
+            <div className="text-center">
+                <h2>THÔNG TIN CÁ NHÂN</h2>
+            </div>
+            <div className="align-items-center d-flex justify-content-center">
+                <div className="col-md-8 ">
+                    <div className="row mt-3 ">
+                        <Form.Group className="col-md-12 mb-3">
+                            <Form.Label>Tên đăng nhập</Form.Label>
+                            <Form.Control type="text" value="username" disabled />
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3">
+                            <Form.Label>Họ tên</Form.Label>
+                            <Form.Control type="text" value="name" disabled />
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3">
+                            <Form.Label>Số điện thoại</Form.Label>
+                            <Form.Control type="number" value="000000000" disabled />
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" value="email" disabled />
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3">
+                            <Form.Label>Ngày sinh</Form.Label>
+                            <Form.Control type="text" value="name" disabled />
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3">
+                            <Form.Label>Địa chỉ</Form.Label>
+                            <Form.Control type="text" value="name" disabled />
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3">
+                            <Form.Label>Chuyên khoa</Form.Label>
+                            <Form.Control type="text" value="name" disabled />
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3">
+                            <Form.Label>Kinh nghiệm làm việc</Form.Label>
+                            <Form.Control as="textarea" rows={6} value="name" disabled />
+                        </Form.Group>
+                        <div className="mt-1 text-center">
+                            <Button type="submit">Chỉnh sửa</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Container>
+    )
+
+}
+export default DoctorInfo;

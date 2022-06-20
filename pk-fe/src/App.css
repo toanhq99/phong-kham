@@ -164,3 +164,125 @@
 .multi-item {
     width: 370px;
 }
+
+.logo {
+    width: 180px;
+    height: auto;
+    border-radius: 100%;
+    min-height: 180px;
+}
+
+.avatar {
+    width: 180px;
+    height: auto;
+    border-radius: 100%;
+    max-height: 180px;
+    object-fit: cover;
+}
+
+.info {
+    flex-direction: column;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgb(47, 48, 53);
+    cursor: pointer;
+    text-align: center;
+}
+
+.specializations {
+    background: rgba(49, 97, 173, 0.1);
+    border-radius: 4px;
+    text-align: center;
+    padding: 2px 8px;
+}
+
+.price-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    flex: 1 1 0%;
+    color: rgb(47, 48, 53);
+    margin-right: 8px;
+    min-width: 68px;
+    margin-bottom: 4px;
+}
+
+.btn-footer {
+    margin-top: auto;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px;
+    background: linear-gradient(79.98deg, rgb(76, 196, 139) 26.18%, rgb(68, 161, 152) 99.22%);
+    border-radius: 0px 0px 4px 4px;
+}
+
+.btn-footer-card {
+    background: linear-gradient(79.98deg, rgb(76, 196, 139) 26.18%, rgb(68, 161, 152) 99.22%);
+    border-radius: 0px 0px 4px 4px;
+    color: white;
+    border: none;
+}
+
+.price-number {
+    font-size: 30px;
+    line-height: 18px;
+    color: #3161ad;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.specialize {
+    flex: 0 0 auto;
+    max-width: 100%;
+    min-height: 22px;
+    background: #dee6f2;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #2f3035;
+    padding: 2px 8px;
+}
+
+.time-booking {
+    background-color: #ffecd6;
+}
+
+.head-time-picker {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    gap: 43px;
+}
+
+.label-time-picker {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.doctor-exp {
+    background: #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 0px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+}
+
+.text-content {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    margin-bottom: 20px;
+}
