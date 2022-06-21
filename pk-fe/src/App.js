@@ -10,6 +10,10 @@ import DoctorDetail from './components/services/DoctorDetail';
 import UserInfo from './components/profiles/UserInfo';
 import DoctorInfo from './components/profiles/DoctorInfo';
 import UserCalendar from './components/profiles/UserCalendar';
+import UserHealth from './components/profiles/UserHealth';
+import DoctorCalendar from './components/profiles/DoctorCalendar';
+import AddNewRecord from './components/services/AddNewRecord';
+import Admin from './components/admin/Admin';
 
 function App() {
   return (
@@ -26,11 +30,19 @@ function App() {
 
         <Route path='/bac-si/chi-tiet' element={<DoctorDetail />} />
 
-        <Route path='/user/info' element={<UserInfo/>}/>
+        <Route path='/user/info' element={<UserInfo />} />
 
-        <Route path='/user/calendar' element={<UserCalendar/>}/>
+        <Route path='/user/calendar' element={<UserCalendar />} />
 
-        <Route path='/doctor/info' element={<DoctorInfo/>}/>
+        <Route path='/user/health' element={<UserHealth />} />
+
+        <Route path='/doctor/info' element={<DoctorInfo />} />
+
+        <Route path='/doctor/calendar' element={<DoctorCalendar />} />
+
+        <Route path='/doctor/add-new-record' element={<AddNewRecord />} />
+
+        <Route path='/admin' element={<Admin/>} />
       </Routes>
       <AppFooter />
     </div>

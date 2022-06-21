@@ -2,9 +2,9 @@ import { Col, Container, Row, Card } from "react-bootstrap"
 
 function UserCalendar() {
     return (
-        <Container className="mx-5">
+        <Container className="mx-5 w-75">
             <div className="mt-5">
-                <h2>Lịch sử đặt lịch</h2>
+                <h2>Hồ sơ sức khỏe</h2>
             </div>
             <Container className="mt-5 w-75 h-25">
                 <Row className="text-center mt-3">
@@ -36,4 +36,4 @@ function UserCalendar() {
     )
 }
 
-export default UserCalendar
+export default UserCalendar;

@@ -46,4 +46,5 @@ function UserInfo() {
         </Container>
     )
 }
+
 export default UserInfo;

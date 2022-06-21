@@ -286,3 +286,13 @@
     opacity: 1;
     margin-bottom: 20px;
 }
+
+
+/* admin */
+
+.admin-left-col {
+    background-color: #212529;
+    min-height: 800px;
+    color: white;
+    padding-right: 0;
+}
