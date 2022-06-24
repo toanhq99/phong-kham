@@ -14,6 +14,8 @@ import UserHealth from './components/profiles/UserHealth';
 import DoctorCalendar from './components/profiles/DoctorCalendar';
 import AddNewRecord from './components/services/AddNewRecord';
 import Admin from './components/admin/Admin';
+import ServiceList from './components/services/ServiceList';
+import ServiceDetail from './components/services/ServiceDetail';
 
 function App() {
   return (
@@ -30,6 +32,10 @@ function App() {
 
         <Route path='/bac-si/chi-tiet' element={<DoctorDetail />} />
 
+        <Route path='/dich-vu' element={<ServiceList />} />
+
+        <Route path='/chi-tiet-dich-vu' element={<ServiceDetail />} />
+
         <Route path='/user/info' element={<UserInfo />} />
 
         <Route path='/user/calendar' element={<UserCalendar />} />
@@ -42,7 +48,7 @@ function App() {
 
         <Route path='/doctor/add-new-record' element={<AddNewRecord />} />
 
-        <Route path='/admin' element={<Admin/>} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
       <AppFooter />
     </div>

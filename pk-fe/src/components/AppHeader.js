@@ -14,9 +14,12 @@ function AppHeader() {
                         <Nav.Link href="#pricing">Pricing</Nav.Link> */}
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">Trang chủ</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Đặt lịch
+                        <Nav.Link href="/">Trang chủ</Nav.Link>
+                        <Nav.Link eventKey={2} href="/bac-si">
+                            Bác sĩ
+                        </Nav.Link>
+                        <Nav.Link eventKey={2} href="/dich-vu">
+                            Dịch vụ
                         </Nav.Link>
                         <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
