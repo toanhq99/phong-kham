@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 
-function ListUser() {
+function ListDoctor() {
     return (
         <div>
             <Table striped bordered hover>
@@ -13,6 +13,8 @@ function ListUser() {
                         <th>Email</th>
                         <th>Ngày sinh</th>
                         <th>Địa chỉ</th>
+                        <th>Chuyên khoa</th>
+                        <th>Kinh nghiệm</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,12 +26,13 @@ function ListUser() {
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </Table>
         </div>
-
     )
 }
 
-export default ListUser;
+export default ListDoctor;
