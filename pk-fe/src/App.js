@@ -16,6 +16,8 @@ import AddNewRecord from './components/services/AddNewRecord';
 import Admin from './components/admin/Admin';
 import ServiceList from './components/services/ServiceList';
 import ServiceDetail from './components/services/ServiceDetail';
+import EditUserInfo from './components/profiles/EditUserInfo';
+import BookingInfo from './components/services/BookingInfo';
 
 function App() {
   return (
@@ -38,7 +40,11 @@ function App() {
 
         <Route path='/user/info' element={<UserInfo />} />
 
+        <Route path='/user/info/edit' element={<EditUserInfo />} />
+
         <Route path='/user/calendar' element={<UserCalendar />} />
+
+        <Route path='/thong-tin-dat-kham' element={<BookingInfo />} />
 
         <Route path='/user/health' element={<UserHealth />} />
 

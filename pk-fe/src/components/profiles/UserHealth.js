@@ -1,7 +1,26 @@
 import { Container, Card, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useState, useParams, useEffect } from "react";
+import axios from "axios";
 
 function UserHealth() {
+    const baseURL = "https:localhost:3000/users"
+    const { id } = useParams();
+    const [user, setUser] = useState([]);
+
+    const userHealth = () => {
+        axios
+        .get(`${baseURL}/${id}`)
+        .then((res) => {
+            setUser(res.data);
+        })
+        .catch((error) => console.log(error));
+    }
+
+    useEffect(() => {
+        userHealth();
+    }, []);
+
     return (
         <Container>
             <div className="flex-row">
@@ -16,7 +35,7 @@ function UserHealth() {
                         <Card.Header as="h5"  >
                             <div className="flex-row d-flex">
                                 <div className="w-75">
-                                    Ngày 1/1/2022, khám Tai mũi họng
+                                    {user.appointmentDay}, {user.specialty}
                                 </div>
                                 <div className="w-25 justify-content-end">
                                     <Dropdown.Toggle />
@@ -25,12 +44,15 @@ function UserHealth() {
                         </Card.Header>
                         <Dropdown.Menu className="w-100">
                             <Card.Body>
-                                <Card.Title>Khám Tai Mũi Họng</Card.Title>
+                                <Card.Title>{user.specialty}</Card.Title>
                                 <Card.Text>
-                                    With supporting text below as a natural lead-in to additional content.
+                                    {user.symptom}
                                 </Card.Text>
                                 <Card.Text>
-                                    With supporting text below as a natural lead-in to additional content.
+                                    {user.treatments}
+                                </Card.Text>
+                                <Card.Text>
+                                    {user.medicalCheckUpDate}
                                 </Card.Text>
                             </Card.Body>
                         </Dropdown.Menu>

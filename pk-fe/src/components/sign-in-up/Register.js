@@ -11,7 +11,7 @@ function Register() {
     const [repassword, setRepassword] = useState("");
     const [rePasswordError, setRepasswordError] = useState("");
 
-    const handleValidation = (event) => {
+    const handleValidation = () => {
         let formIsValid = true;
 
         if (!username) {
@@ -55,7 +55,6 @@ function Register() {
     };
 
     const handleSubmit = (e) => {
-        
         e.preventDefault();
         handleValidation();
         console.log(username+password+ repassword);
@@ -69,8 +68,6 @@ function Register() {
             .then((res) => console.log(res))
             .catch((error) => console.log(error)
             );
-
-
     };
 
     return (

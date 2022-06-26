@@ -1,6 +1,25 @@
 import { Button, Container, Form } from "react-bootstrap";
+import { useState, useEffect, useParams } from "react";
+import axios from "axios";
 
 function DoctorDetail() {
+    const baseURL = "https:localhost:3000/users"
+    const { id } = useParams();
+    const [doctor, setDoctor] = useState([]);
+
+    const doctorInfo = () => {
+        axios
+        .get(`${baseURL}/${id}`)
+        .then((res) => {
+            setDoctor(res.data);
+        })
+        .catch((error) => console.log(error));
+    }
+
+    useEffect(() => {
+        doctorInfo();
+    }, []);
+    
     return (
         <Container className="py-6">
             <div className="d-flex align-items-center mb-3">
@@ -13,16 +32,16 @@ function DoctorDetail() {
                 </div>
                 <div className="doctor-text p-4">
                     <div className="doctor-text-head d-flex">
-                        <h1 className="mb-3">Phạm Thị Bích Đào</h1>
+                        <h1 className="mb-3">{doctor.name}</h1>
                     </div>
                     <div className="doctor-text-more d-flex flex-column">
                         <div className="price-info mb-4">
                             <div className="text-align-center d-flex align-items-center justify-content-start">
-                                <span className="price-number">500000d</span>
+                                <span className="price-number">{doctor.price}đ</span>
                             </div>
                         </div>
                         <div className="d-flex">
-                            <div className="specialize">Chuyên khoa Tai mũi họng</div>
+                            <div className="specialize">{doctor.specialty}</div>
                         </div>
                     </div>
                 </div>
@@ -45,14 +64,7 @@ function DoctorDetail() {
             <Container className="mx-3 mt-3 mb-4 doctor-exp">
                 <h4 className="mb-3">Kinh nghiệm khám chữa bệnh</h4>
                 <pre className="text-content">
-                    BS.PGS.TS
-                    Bác sĩ nội trú
-                    25 năm trong chuyên ngành Tai Mũi Họng
-                    - Chữa các bệnh vùng Tai- Mũi - Hong: viêm tai, viêm mũi xoang, viêm họng, viêm loét họng, miệng, tăng tiết nước bọt vùng khoang miệng... bệnh lý các khối u vùng đầu mặt cổ
-                    - Chuyên gia về trị liệu giọng nói cho những người làm các nghề liên quan đến giọng như phát thanh viên, ca sĩ, giáo viên...
-                    - Các rối loạn giọng sau phẫu thuật
-                    - Chuyên gia điều trị chóng mặt, rối loạn thăng bằng, ù tai
-                    - Điều trị các đau mạn tính vùng sọ mặt, vùng lưỡi
+                    {doctor.exp}
                 </pre>
             </Container>
         </Container>
