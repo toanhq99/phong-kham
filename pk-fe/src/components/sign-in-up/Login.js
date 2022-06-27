@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 
@@ -34,6 +35,12 @@ function Login() {
     const loginSubmit = (e) => {
         e.preventDefault();
         handleValidation();
+        console.log(username + " " + password);
+        axios
+            .post('/login', {
+                username: username,
+                password: password
+            })
     };
 
     return (
@@ -44,7 +51,7 @@ function Login() {
                     <hr></hr>
                     <Form id="loginform" onSubmit={loginSubmit}>
                         <Form.Group className="mb-3">
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label>Tên đăng nhập</Form.Label>
                             <Form.Control
                                 type="text"
                                 className="form-control"
