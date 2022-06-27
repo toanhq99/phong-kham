@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
 
 function Login() {
@@ -7,6 +8,19 @@ function Login() {
     const [username, setUsername] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [usernameError, setUsernameError] = useState("");
+    const [Usertest, setUsertest] = useState({
+        "address": '',
+        "birth": '',
+        "email": '',
+        "fullName": '',
+        "id": null,
+        "level": null,
+        "password": '',
+        "phoneNumber": '',
+        "sex": true,
+        "updateAt": null,
+        "username": ''
+    });
 
     const handleValidation = (event) => {
         let formIsValid = true;
@@ -37,12 +51,12 @@ function Login() {
         handleValidation();
         console.log(username + " " + password);
         axios
-            .post('/login', {
-                username: username,
+            .post('http://localhost:8084/User/login', {
+                userName: username,
                 password: password
-            })
+            }).then(res =>setUsertest(res.data.data));
+        console.log(Usertest);
     };
-
     return (
         <Container>
             <div className="row d-flex justify-content-center">
