@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eced2288-d6ed-42be-afff-13ef6fc80cf2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Api-Phong-kham-v1" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Phong-kham-v1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Api-Phong-kham-v1/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Api-Phong-kham-v1/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pk-fe/src/components/AppHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pk-fe/src/components/AppHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pk-fe/src/components/profiles/UserCalendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pk-fe/src/components/profiles/UserCalendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pk-fe/src/components/profiles/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pk-fe/src/components/profiles/UserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pk-fe/src/components/services/DoctorDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pk-fe/src/components/services/DoctorDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pk-fe/src/components/sign-in-up/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../pk-fe/src/components/sign-in-up/Login.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Api-Phong-kham-v1" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2B9jOeV2OURm11hSTK0iK8MNiFr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "D:/Web/clinic/Api-Phong-kham-v1"
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="ApiPhongKham1Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.ApiPhongKham1Application" />
+      <module name="Api-phong-kham-v1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ApiPhongKham1Application" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eced2288-d6ed-42be-afff-13ef6fc80cf2" name="Changes" comment="" />
+      <created>1656325168551</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656325168551</updated>
+    </task>
+    <servers />
+  </component>
+</project>
