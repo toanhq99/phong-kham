@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 function Login() {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [usernameError, setUsernameError] = useState("");
+
+    let navigate = useNavigate();
 
     const handleValidation = (event) => {
         let formIsValid = true;
@@ -37,10 +40,23 @@ function Login() {
         handleValidation();
         console.log(username + " " + password);
         axios
-            .post('/login', {
-                username: username,
+            .post('http://localhost:8084/User/login', {
+                userName: username,
                 password: password
             })
+            .then((res) => {
+                console.log(res);
+                if (res.data.data == null) {
+                    navigate("/login");
+                    localStorage.removeItem("accessToken");
+                    alert("Tên đăng nhập hoặc mật khẩu không đúng");
+
+                } else {
+                    navigate("/");
+                    localStorage.setItem("accessToken", JSON.stringify(res.data.data))
+                }
+            })
+            .catch((err) =>console.log(err));
     };
 
     return (
