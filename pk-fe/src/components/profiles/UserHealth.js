@@ -11,11 +11,13 @@ function UserHealth() {
     const isDoctor = () => {
         if (userInfo.role === "Doctor") {
             return (
-                <Link to={"/add-new-record/" + user.id}>
-                    <Button>
-                        Thêm mới hồ sơ
-                    </Button>
-                </Link>
+                <div className="w-75 text-end mt-4">
+                    <Link to={"/doctor/add-new-record/" + id}>
+                        <Button>
+                            Thêm mới hồ sơ
+                        </Button>
+                    </Link>
+                </div>
             )
         }
     }
@@ -26,9 +28,10 @@ function UserHealth() {
             .get('http://localhost:8084/Heath/getAllHeathByIdUser/' + id)
             .then((res) => {
                 setUser(res.data.data);
+                console.log(res.data.data);
             })
             .catch((error) => console.log(error));
-    });
+    }, [id]);
 
     return (
         <Container>
@@ -38,6 +41,7 @@ function UserHealth() {
             <div className="text-center">
                 <h2>HỒ SƠ SỨC KHỎE</h2>
             </div>
+            {isDoctor()}
             <Container className="mt-4 w-75 h-25">
                 <Card className="mt-3">
                     <Card.Header as="h5">{user.time}</Card.Header>
@@ -49,7 +53,6 @@ function UserHealth() {
                         <Card.Text>
                             Triệu chứng: {user.symptom}
                         </Card.Text>
-                        {isDoctor()}
                     </Card.Body>
                 </Card>
             </Container>

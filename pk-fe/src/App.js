@@ -61,7 +61,7 @@ function App() {
 
         <Route path='/doctor/calendar' element={<DoctorCalendar />} />
 
-        <Route path='/doctor/add-new-record/' element={<AddNewRecord />} />
+        <Route path='/doctor/add-new-record/:id' element={<AddNewRecord />} />
 
         <Route path='/admin/*' element={<Admin />}>
           <Route path="list-users/" element={<ListUser />} />

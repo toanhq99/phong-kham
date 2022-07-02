@@ -1,25 +1,16 @@
 import { Container, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 
 function DoctorInfo() {
     const [doctor, setDoctor] = useState([]);
 
     useEffect(() => {
-        doctorInfo();
+        const doctor = JSON.parse(localStorage.getItem("accessToken"));
+        if (doctor) {
+            setDoctor(doctor);
+        }
     }, []);
-
-    const doctorInfo = () => {
-        axios
-            .get(`http://localhost:8084/User/getDoctorById/1`)
-            .then((res) => {
-                setDoctor(res.data.data);
-                console.log(res.data.data);
-            })
-            .catch((error) => console.log(error)
-            );
-    }
 
     return (
         <Container>
