@@ -70,10 +70,10 @@ function AppHeader() {
                     </Nav>
                     <Nav>
                         <Nav.Link href="/">Trang chủ</Nav.Link>
-                        <Nav.Link eventKey={2} href="doctor">
+                        <Nav.Link eventKey={2} href="/doctor">
                             Bác sĩ
                         </Nav.Link>
-                        <Nav.Link eventKey={2} href="service">
+                        <Nav.Link eventKey={2} href="/service">
                             Dịch vụ
                         </Nav.Link>
                         {isLogin()}
