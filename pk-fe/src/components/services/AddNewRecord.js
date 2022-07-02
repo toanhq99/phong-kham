@@ -1,6 +1,7 @@
 import { Container, Card, Button, Form } from "react-bootstrap"
-import { useState, useEffect, useParams } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router";
 
 function AddNewRecord() {
     const baseURL = "https:localhost:3000/users"

@@ -13,6 +13,7 @@ function DoctorCalendar() {
             .get('http://localhost:8084/TimeOder/getAllTimeOderByDoctorId/' + doctor.id)
             .then((res) => {
                 setCalendar(res.data.data);
+                console.log(res.data.data);
             })
             .catch((err) => console.log(err));
     },[doctor.id]);
