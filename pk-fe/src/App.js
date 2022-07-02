@@ -49,7 +49,7 @@ function App() {
 
         <Route path='/user/calendar/' element={<UserCalendar />} />
 
-        <Route path='/booking-info/' element={<BookingInfo />} />
+        <Route path='/booking-info/:id' element={<BookingInfo />} />
 
         <Route path='/user/health/' element={<UserHealth />} />
 

@@ -9,6 +9,10 @@ function DoctorDetail() {
     const [bookDay, setBookDay] = useState("");
     const [bookHour, setBookHour] = useState("initialState");
 
+    let today = new Date();
+
+    let date = today.getFullYear() + "-0" + parseInt(today.getMonth() + 1) + "-0" + today.getDate();
+
     const getDoctor = () => {
         axios
             .get(`http://localhost:8084/User/getDoctorById/${id}`)
@@ -68,14 +72,14 @@ function DoctorDetail() {
                         <div className="group-time-picker">
                             <div className="head-time-picker">
                                 <div className="label-time-picker">Lịch tư vấn trực tuyến</div>
-                                <Form.Control className='mx-3 w-25' type='date' onChange={(e) => setBookDay(e.target.value)} />
+                                <Form.Control className='mx-3 w-25' type='date' defaultValue={date} onChange={(e) => setBookDay(e.target.value)} />
                             </div>
                             <Form.Group className="d-flex mb-4">
                                 <Form.Check className="me-3" type="radio" name="isPublic" label="11:00" onChange={(e) => setBookHour("11:00:00.00")} />
                                 <Form.Check className="me-3" type="radio" name="isPublic" label="12:00" onChange={(e) => setBookHour("12:00:00.00")} />
                             </Form.Group>
                         </div>
-                        <Link to={`/booking-info`}>
+                        <Link to={`/booking-info/${id}`}>
                             <Button type='submit' variant="success">Xác nhận</Button>
                         </Link>
                     </Form>
