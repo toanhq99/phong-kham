@@ -13,7 +13,7 @@ function AppHeader() {
     }
 
     const haveName = () => {
-        if (!user.fullName) {
+        if (user.fullName==null) {
             return user.username;
         } else {
             return user.fullName;
@@ -40,9 +40,18 @@ function AppHeader() {
                     </NavDropdown>
                 )
             } else {
+                if(user.role ==='Doctor') 
                 return (
                     <NavDropdown title={"Xin chào, " + haveName()} id="collasible-nav-dropdown">
                         <NavDropdown.Item href="/doctor/info">Thông tin cá nhân</NavDropdown.Item>
+                        <NavDropdown.Item href="/doctor/calendar">Lịch khám trong ngày</NavDropdown.Item>
+                        <NavDropdown.Item onClick={logout}>Đăng xuất</NavDropdown.Item>
+                    </NavDropdown>
+                )
+                return (
+                    <NavDropdown title={"Xin chào, " + haveName()} id="collasible-nav-dropdown">
+                        <NavDropdown.Item href="/doctor/info">Thông tin cá nhân</NavDropdown.Item>
+                        <NavDropdown.Item href="/admin">Quản lý User </NavDropdown.Item>
                         <NavDropdown.Item href="/doctor/calendar">Lịch khám trong ngày</NavDropdown.Item>
                         <NavDropdown.Item onClick={logout}>Đăng xuất</NavDropdown.Item>
                     </NavDropdown>

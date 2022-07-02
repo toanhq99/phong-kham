@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function UserCalendar() {
+    const [user,setUser] = useState([]);
     const [appointment, setAppointment] = useState([]);
     const appointment1 = {
         id : 1,
@@ -11,16 +12,24 @@ function UserCalendar() {
         content: "lich kham tai mui hong",
         status : true
     }
-
-    useEffect(() => {
+    const getAppointment=()=> {
         axios
-            .get(`/user/calendar/1`, {
-                
-            })
+            .get('')
             .then(res => setAppointment(res.data))
             .catch(error => console.log(error));
+    }
+    const  getUser=()=>{
+        const users = JSON.parse(localStorage.getItem("accessToken"));
+        if (users) {
+            setUser(users);
+            console.log(user);
+        }
+    }
+    
+    useEffect(() => {
+        getUser();
+        getAppointment();
     }, []);
-
     return (
         <Container className="w-50 h-100 justify-content-center d-flex position-relative flex-column mt-2">
             <h2 className="mx-5 text-center">Lịch sử đặt khám</h2>
