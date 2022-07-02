@@ -53,6 +53,8 @@ function App() {
 
         <Route path='/user/health/' element={<UserHealth />} />
 
+        <Route path='/user/health/:id' element={<UserHealth />} />
+
         <Route path='/doctor/info/' element={<DoctorInfo />} />
 
         <Route path='/doctor/info/edit/' element={<EditDoctorInfo />} />

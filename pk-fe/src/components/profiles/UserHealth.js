@@ -1,24 +1,33 @@
-import { Container, Card, Dropdown } from "react-bootstrap";
+import { Container, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState, useParams, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function UserHealth() {
-    const baseURL = "https:localhost:3000/users"
-    const { id } = useParams();
     const [user, setUser] = useState([]);
-
-    const userHealth = () => {
-        axios
-        .get(`${baseURL}/${id}`)
-        .then((res) => {
-            setUser(res.data);
-        })
-        .catch((error) => console.log(error));
+    const userInfo = JSON.parse(localStorage.getItem("accessToken"));
+    const { id } = useParams();
+    const isDoctor = () => {
+        if (userInfo.role === "Doctor") {
+            return (
+                <Link to={"/add-new-record/" + user.id}>
+                    <Button>
+                        Thêm mới hồ sơ
+                    </Button>
+                </Link>
+            )
+        }
     }
 
     useEffect(() => {
-        userHealth();
+
+        axios
+            .get('http://localhost:8084/Heath/getAllHeathByIdUser/' + id)
+            .then((res) => {
+                setUser(res.data.data);
+            })
+            .catch((error) => console.log(error));
     });
 
     return (
@@ -29,35 +38,20 @@ function UserHealth() {
             <div className="text-center">
                 <h2>HỒ SƠ SỨC KHỎE</h2>
             </div>
-            <Container className="w-75 mt-4">
-                <Dropdown>
-                    <Card >
-                        <Card.Header as="h5"  >
-                            <div className="flex-row d-flex">
-                                <div className="w-75">
-                                    {user.appointmentDay}, {user.specialty}
-                                </div>
-                                <div className="w-25 justify-content-end">
-                                    <Dropdown.Toggle />
-                                </div>
-                            </div>
-                        </Card.Header>
-                        <Dropdown.Menu className="w-100">
-                            <Card.Body>
-                                <Card.Title>{user.specialty}</Card.Title>
-                                <Card.Text>
-                                    {user.symptom}
-                                </Card.Text>
-                                <Card.Text>
-                                    {user.treatments}
-                                </Card.Text>
-                                <Card.Text>
-                                    {user.medicalCheckUpDate}
-                                </Card.Text>
-                            </Card.Body>
-                        </Dropdown.Menu>
-                    </Card>
-                </Dropdown>
+            <Container className="mt-4 w-75 h-25">
+                <Card className="mt-3">
+                    <Card.Header as="h5">{user.time}</Card.Header>
+                    <Card.Body>
+                        <Card.Title>Khách hàng: {user.fullName}</Card.Title>
+                        <Card.Text>
+                            Giờ khám: {user.time}
+                        </Card.Text>
+                        <Card.Text>
+                            Triệu chứng: {user.symptom}
+                        </Card.Text>
+                        {isDoctor()}
+                    </Card.Body>
+                </Card>
             </Container>
         </Container>
     )
