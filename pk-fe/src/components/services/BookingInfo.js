@@ -1,28 +1,51 @@
 import { Container, Card, Button, Form } from "react-bootstrap"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 function BookingInfo() {
     const [symptom, setSymptom] = useState("");
-    const bookInfo = {
-        name: "Hà Quang Toàn",
-        appointmentHour: "7:00",
-        appointmentDay: "11/11/2022",
-        content: "Tư vấn với bác sĩ Hà Quang Toàn",
-        price: 500000,
-        symptom: symptom
-    }
+    const [user, setUser] = useState([]);
+    const [bookInfo, setBookInfo] = useState([]);
+    let navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(bookInfo.name + bookInfo.appointmentHour+ bookInfo.appointmentDay + bookInfo.content + bookInfo.price + symptom);
 
         axios
-            .post('/dat-lich/thong-tin-dat-lich', bookInfo)
-            .then((res) => console.log(res))
+            .post('http://localhost:8084/TimeOder/createTimeOder', {
+                time: bookInfo.day+"T"+bookInfo.hour,
+                time_oder:bookInfo.day+"T"+bookInfo.hour,
+                symptom: symptom
+            })
+            .then((res) => {
+                console.log(res.data);
+                localStorage.removeItem("bookingInfo");
+                alert("Đặt lịch thành công")
+                // navigate("/")
+            })
             .catch((error) => console.log(error)
             );
     };
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("accessToken"));
+        if (user) {
+            setUser(user);
+        }
+
+        const bookInfo = JSON.parse(localStorage.getItem("bookingInfo"));
+        if (bookInfo) {
+            setBookInfo(bookInfo);
+        }
+    }, []);
+
+    if (!localStorage.getItem("accessToken")) {
+        return (
+            alert("Vui lòng đăng nhập để tiếp tục sử dụng dịch vụ"),
+            navigate("/login")
+        )
+    }
 
     return (
         <Container>
@@ -31,23 +54,20 @@ function BookingInfo() {
             </div>
             <Container className="mt-5 w-75">
                 <Card onSubmit={handleSubmit}>
-                    <Card.Header as="h5">Khách hàng: {bookInfo.name}</Card.Header>
+                    <Card.Header as="h5">Khách hàng: {user.fullName}</Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            Giờ hẹn: {bookInfo.appointmentHour}
+                            Giờ hẹn: {bookInfo.hour}
                         </Card.Text>
                         <Card.Text>
-                            Ngày khám: {bookInfo.appointmentDay}
+                            Ngày khám: {bookInfo.day}
                         </Card.Text>
                         <Card.Text>
-                            {bookInfo.content}
-                        </Card.Text>
-                        <Card.Text>
-                            Giá dịch vụ: {bookInfo.price}đ
+                            Giá dịch vụ: 500000đ
                         </Card.Text>
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Triệu chứng</Form.Label>
+                                <Form.Label>Triệu chứng: </Form.Label>
                                 <Form.Control as="textarea" rows={3} onChange={(e) => setSymptom(e.target.value)} />
                             </Form.Group>
                             <Button variant="primary" type="submit">

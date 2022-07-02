@@ -1,13 +1,13 @@
 import { Container, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState, useParams } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function EditDoctorInfo() {
-    const baseURL = "https:localhost:3000/users"
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+    const [sex, setSex] = useState(true);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
     const [dateOfBirth, setDateOfBirth] = useState("");
@@ -23,7 +23,6 @@ function EditDoctorInfo() {
     const [addressError, setAddressError] = useState("");
     const [specialtyError, setSpecialtyError] = useState("");
     const [expError, setExpError] = useState("");
-    const { id } = useParams();
 
     const handleValidation = () => {
         let formIsValid = true;
@@ -102,7 +101,7 @@ function EditDoctorInfo() {
 
         if (!exp) {
             formIsValid = false;
-            setExpError("Địa chỉ không được để trống");
+            setExpError("Kinh nghiệm không được để trống không được để trống");
             return false;
         } else {
             setAddressError("");
@@ -117,22 +116,31 @@ function EditDoctorInfo() {
         handleValidation();
         console.log(username + password + name + phoneNumber + email + dateOfBirth + address)
         axios
-            .put(`${baseURL}/${id}`, {
-                username: username,
-                password: password,
-                name: name,
+            .put(`http://localhost:8084/User/update/1`, {
+                fullName: name,
                 phoneNumber: phoneNumber,
-                email: email,
-                dateOfBirth: dateOfBirth,
-                address: address,
-                specialty: specialty,
-                exp: exp
+                sex: sex,
+                birth: dateOfBirth,
+                address: address
             })
             .then((res) => console.log(res))
             .catch((error) => console.log(error)
             );
     };
 
+    useEffect(() => {
+        axios
+            .get(`http://localhost:8084/User/getDoctorById/1`, {
+                fullName: name,
+                phoneNumber: phoneNumber,
+                sex: sex,
+                birth: dateOfBirth,
+                address: address
+            })
+            .then((res) => console.log(res))
+            .catch((error) => console.log(error)
+            );
+    });
     return (
         <Container>
             <div className="flex-row mt-4">
@@ -164,6 +172,13 @@ function EditDoctorInfo() {
                             <small className="text-danger form-text">
                                 {nameError}
                             </small>
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3 blog-checkbox">
+                            <Form.Label>Giới tính: </Form.Label>
+                            <div className="d-flex">
+                                <Form.Check className="me-3" type="radio" onChange={() => setSex(true)} label="Nam" />
+                                <Form.Check className="me-3" type="radio" onChange={() => setSex(false)} label="Nữ" />
+                            </div>
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Số điện thoại</Form.Label>
@@ -215,6 +230,5 @@ function EditDoctorInfo() {
             </div>
         </Container>
     )
-
 }
 export default EditDoctorInfo;

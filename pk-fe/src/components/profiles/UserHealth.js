@@ -19,7 +19,7 @@ function UserHealth() {
 
     useEffect(() => {
         userHealth();
-    }, []);
+    });
 
     return (
         <Container>

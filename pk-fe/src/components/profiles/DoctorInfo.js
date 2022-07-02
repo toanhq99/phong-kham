@@ -4,22 +4,22 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function DoctorInfo() {
-    const baseURL = "https:localhost:3000/users"
     const [doctor, setDoctor] = useState([]);
-
-    const doctorInfo = (id) => {
-        axios
-            .get(`${baseURL}/${id}`)
-            .then((res) => {
-                setDoctor(res.data);
-            })
-            .catch((error) => console.log(error)
-            );
-    }
 
     useEffect(() => {
         doctorInfo();
     }, []);
+
+    const doctorInfo = () => {
+        axios
+            .get(`http://localhost:8084/User/getDoctorById/1`)
+            .then((res) => {
+                setDoctor(res.data.data);
+                console.log(res.data.data);
+            })
+            .catch((error) => console.log(error)
+            );
+    }
 
     return (
         <Container>
@@ -38,7 +38,14 @@ function DoctorInfo() {
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Họ tên</Form.Label>
-                            <Form.Control type="text" value={doctor.name} disabled />
+                            <Form.Control type="text" value={doctor.fullName} disabled />
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3 blog-checkbox">
+                            <Form.Label>Giới tính: </Form.Label>
+                            <div className="d-flex">
+                                <Form.Check className="me-3" type="radio" checked={doctor.sex === true} label="Nam" readOnly />
+                                <Form.Check className="me-3" type="radio" checked={doctor.sex === false} label="Nữ" readOnly />
+                            </div>
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Số điện thoại</Form.Label>
@@ -50,7 +57,7 @@ function DoctorInfo() {
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Ngày sinh</Form.Label>
-                            <Form.Control type="text" value={doctor.dateOfBirth} disabled />
+                            <Form.Control type="date" value={doctor.birth} disabled />
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Địa chỉ</Form.Label>
@@ -58,18 +65,18 @@ function DoctorInfo() {
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Chuyên khoa</Form.Label>
-                            <Form.Control type="text" value={doctor.specialty} disabled />
+                            <Form.Control type="text" value={doctor.department} disabled />
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Kinh nghiệm làm việc</Form.Label>
-                            <Form.Control as="textarea" rows={6} value={doctor.exp} disabled />
+                            <Form.Control as="textarea" rows={6} value={doctor.department} disabled />
                         </Form.Group>
                         <div className="mt-1 text-center">
-                            <Button type="submit">
-                                <Link to={"/doctor/edit"}>
+                            <Link to={"/doctor/info/edit/"}>
+                                <Button type="submit">
                                     Chỉnh sửa
-                                </Link>
-                            </Button>
+                                </Button>
+                            </Link>
                         </div>
                     </Form>
                 </div>

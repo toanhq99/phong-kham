@@ -6,18 +6,20 @@ import { Link } from "react-router-dom"
 function DoctorCalendar() {
     const [calendar, setCalendar] = useState("");
 
-    const doctorCalendar = (id) => {
+    const doctor = JSON.parse(localStorage.getItem("accessToken"));
+
+    const doctorCalendar = () => {
         axios
-            .get(`doctor/calendar/${id}`)
+            .get(`http://localhost:8084/TimeWork/getAllByIdDoctor/${doctor.id}`)
             .then((res) => {
-                setCalendar(res.data)
+                setCalendar(res.data.data)
             })
             .catch((err) => console.log(err));
     }
 
     useEffect(() => {
         doctorCalendar();
-    }, []);
+    });
 
     return (
         <Container>

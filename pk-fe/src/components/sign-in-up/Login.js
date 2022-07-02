@@ -40,7 +40,7 @@ function Login() {
         handleValidation();
         console.log(username + " " + password);
         axios
-            .post('http://localhost:8084/User/login', {
+            .post('http://localhost:8084/api/auth/login', {
                 userName: username,
                 password: password
             })
@@ -53,10 +53,10 @@ function Login() {
 
                 } else {
                     navigate("/");
-                    localStorage.setItem("accessToken", JSON.stringify(res.data.data))
+                    localStorage.setItem("accessToken", JSON.stringify(res.data.data));
                 }
             })
-            .catch((err) =>console.log(err));
+            .catch((err) => console.log(err));
     };
 
     return (

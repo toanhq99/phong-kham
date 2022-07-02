@@ -7,9 +7,9 @@ function ListDoctor() {
 
     const listDoctor = () => {
         axios
-            .get("/get/all")
+            .get("http://localhost:8084/User/GetAllDoctor")
             .then((res) => {
-                setDoctors(res.data)
+                setDoctors(res.data.data);
             })
             .catch((err) => console.log(err));
     }
@@ -25,11 +25,12 @@ function ListDoctor() {
                     <tr>
                         <th>Id</th>
                         <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Ngày sinh</th>
+                        <th>Địa chỉ</th>
                         <th>Tên đăng nhập</th>
                         <th>Số điện thoại</th>
                         <th>Email</th>
-                        <th>Ngày sinh</th>
-                        <th>Địa chỉ</th>
                         <th>Chuyên khoa</th>
                         <th>Kinh nghiệm</th>
                     </tr>
@@ -37,14 +38,16 @@ function ListDoctor() {
                 <tbody>
                     {doctors?.map((doctor) => (
                         <tr key={doctor.id}>
-                            <td>{doctor.name}</td>
+                            <td>{doctor.id}</td>
+                            <td>{doctor.fullName}</td>
+                            <td>{doctor.sex ? "Nam" : "Nữ"}</td>
+                            <td>{doctor.birth}</td>
+                            <td>{doctor.address}</td>
                             <td>{doctor.username}</td>
                             <td>{doctor.phoneNumber}</td>
                             <td>{doctor.email}</td>
-                            <td>{doctor.dateOfBirth}</td>
-                            <td>{doctor.address}</td>
-                            <td>{doctor.specialty}</td>
-                            <td>{doctor.exp}</td>
+                            <td>{doctor.department.title}</td>
+                            <td>{doctor.department.detail}</td>
                         </tr>
                     ))}
                 </tbody>

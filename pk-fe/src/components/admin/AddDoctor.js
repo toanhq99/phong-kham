@@ -1,110 +1,162 @@
-import { Container, Button, Form } from "react-bootstrap";
 import { useState } from "react";
+import { Button, Container, Form } from "react-bootstrap";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 function AddDoctor() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
     const [email, setEmail] = useState("");
-    const [dateOfBirth, setDateOfBirth] = useState("");
-    const [address, setAddress] = useState("");
-    const [specialty, setSpecialty] = useState("");
-    const [exp, setExp] = useState("");
+    const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [usernameError, setUsernameError] = useState("");
+    const [repassword, setRepassword] = useState("");
+    const [rePasswordError, setRepasswordError] = useState("");
 
-    const handleSubmit = (e) => {
+    let navigate = useNavigate();
+
+    const handleValidation = () => {
+        let formIsValid = true;
+
+        if (!username) {
+            formIsValid = false;
+            setUsernameError("Tên đăng nhập không được để trống");
+            return false;
+        } else {
+            setUsernameError("");
+            formIsValid = true;
+        }
+
+        if (!email) {
+            formIsValid = false;
+            setEmailError("Email không được để trống");
+            return false;
+        } else {
+            setEmailError("");
+            formIsValid = true;
+        }
+
+        if (!password) {
+            formIsValid = false;
+            setPasswordError("Mật khẩu không được để trống");
+            return false;
+        } else {
+            setPasswordError("");
+            formIsValid = true;
+        }
+
+        if (!repassword) {
+            formIsValid = false;
+            setPasswordError("Mật khẩu không được để trống");
+            return false;
+        } else {
+            setPasswordError("");
+            formIsValid = true;
+        }
+
+        if (repassword !== password) {
+            formIsValid = false;
+            setRepasswordError("Không trùng nhau");
+            return false;
+        }
+        else {
+            setRepasswordError("");
+            formIsValid = true;
+        }
+
+        return formIsValid;
+    };
+
+    const registerSubmit = (e) => {
         e.preventDefault();
-        console.log(username + password);
-
+        handleValidation();
+        console.log(username + " " + password);
         axios
-            .post(`/add-doctor`, {
-                username: username,
+            .post('http://localhost:8084/api/auth/register', {
+                emal: email,
+                userName: username,
                 password: password,
-                name: name,
-                phoneNumber: phoneNumber,
-                email: email,
-                dateOfBirth: dateOfBirth,
-                address: address,
-                specialty: specialty,
-                exp: exp
+                level: 2
             })
-            .then((res) => console.log(res))
-            .catch((error) => console.log(error)
-            );
+            .then((res) => {
+                console.log(res);
+                if (res.data.data == null) {
+                    localStorage.removeItem("accessToken");
+                    alert("Tên đăng nhập hoặc email đã tồn tại");
+                    navigate("/register");
+                } else {
+                    localStorage.setItem("accessToken", JSON.stringify(res.data.data));
+                    alert("Đăng kí thành công")
+                    navigate("/");
+                }
+            })
+            .catch((err) => console.log(err));
     };
 
     return (
         <Container>
-            <div className="text-center">
-                <h2>THÊM BÁC SĨ</h2>
-            </div>
-            <div className="align-items-center d-flex justify-content-center">
-                <div className="col-md-8 ">
-                    <Form className="row mt-3" onSubmit={handleSubmit}>
-                        <Form.Group className="col-md-12 mb-3">
+            <div className="row d-flex justify-content-center">
+                <div className="col-md-4">
+                    <div className="content-steps">Đăng ký</div>
+                    <hr></hr>
+                    <Form id="loginform" onSubmit={registerSubmit}>
+                        <Form.Group className="mb-3">
                             <Form.Label>Tên đăng nhập</Form.Label>
                             <Form.Control
                                 type="text"
-                                onChange={(event) => setUsername(event.target.value)} />
+                                placeholder="Nhập tên đăng nhập"
+                                onChange={(event) => setUsername(event.target.value)}
+                            />
+                            <small id="emailHelp" className="text-danger form-text">
+                                {usernameError}
+                            </small>
                         </Form.Group>
-                        <Form.Group className="col-md-12 mb-3">
-                            <Form.Label>Mật khẩu</Form.Label>
-                            <Form.Control
-                                type="password"
-                                onChange={(event) => setPassword(event.target.value)} />
-                        </Form.Group>
-                        <Form.Group className="col-md-12 mb-3">
-                            <Form.Label>Họ tên</Form.Label>
-                            <Form.Control
-                                type="text"
-                                onChange={(event) => setName(event.target.value)} />
-                        </Form.Group>
-                        <Form.Group className="col-md-12 mb-3">
-                            <Form.Label>Số điện thoại</Form.Label>
-                            <Form.Control
-                                type="number"
-                                onChange={(event) => setPhoneNumber(event.target.value)} />
-                        </Form.Group>
-                        <Form.Group className="col-md-12 mb-3">
+                        <Form.Group className="mb-3">
                             <Form.Label>Email</Form.Label>
                             <Form.Control
                                 type="email"
-                                onChange={(event) => setEmail(event.target.value)} />
+                                placeholder="Nhập email"
+                                onChange={(event) => setEmail(event.target.value)}
+                            />
+                            <small id="emailHelp" className="text-danger form-text">
+                                {emailError}
+                            </small>
                         </Form.Group>
-                        <Form.Group className="col-md-12 mb-3">
-                            <Form.Label>Ngày sinh</Form.Label>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Mật khẩu</Form.Label>
                             <Form.Control
-                                type="text"
-                                onChange={(event) => setDateOfBirth(event.target.value)} />
+                                type="password"
+                                id="exampleInputPassword"
+                                placeholder="Nhập mật khẩu"
+                                onChange={(event) => setPassword(event.target.value)}
+                            />
+                            <small id="passworderror" className="text-danger form-text">
+                                {passwordError}
+                            </small>
                         </Form.Group>
-                        <Form.Group className="col-md-12 mb-3">
-                            <Form.Label>Địa chỉ</Form.Label>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Nhập lại mật khẩu</Form.Label>
                             <Form.Control
-                                type="text"
-                                onChange={(event) => setAddress(event.target.value)} />
+                                type="password"
+                                id="exampleInputPassword1"
+                                placeholder="Nhập lại mật khẩu"
+                                onChange={(event) => setRepassword(event.target.value)}
+                            />
+                            <small id="repassworderror" className="text-danger form-text">
+                                {passwordError}
+                                {rePasswordError}
+                            </small>
                         </Form.Group>
-                        <Form.Group className="col-md-12 mb-3">
-                            <Form.Label>Chuyên khoa</Form.Label>
-                            <Form.Control
-                                type="text"
-                                onChange={(event) => setSpecialty(event.target.value)} />
-                        </Form.Group>
-                        <Form.Group className="col-md-12 mb-3">
-                            <Form.Label>Kinh nghiệm làm việc</Form.Label>
-                            <Form.Control
-                                as="textarea"
-                                rows={6}
-                                onChange={(event) => setExp(event.target.value)} />
-                        </Form.Group>
-                        <div className="mt-1 text-center">
-                            <Button type="submit">Xác nhận</Button>
+                        <div className="text-center">
+                            <Button type="submit" className="btn btn-primary">
+                                Xác nhận
+                            </Button>
                         </div>
                     </Form>
                 </div>
             </div>
         </Container>
     )
-
 }
+
 export default AddDoctor;

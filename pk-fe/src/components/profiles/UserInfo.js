@@ -1,28 +1,19 @@
 import { Container, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState, useParams, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 
 function UserInfo() {
-    const baseURL = "https:localhost:3000/users"
-    const { id } = useParams();
     const [user, setUser] = useState([]);
 
-    const userHealth = () => {
-        axios
-        .get(`${baseURL}/${id}`)
-        .then((res) => {
-            setUser(res.data);
-        })
-        .catch((error) => console.log(error));
-    }
-
     useEffect(() => {
-        userHealth();
+        const user = JSON.parse(localStorage.getItem("accessToken"));
+        if (user) {
+            setUser(user);
+        }
     }, []);
 
     return (
-        <Container>
+        <Container className="mt-4">
             <div className="flex-row">
                 <Link to={"/"}>Trang chủ</Link> / Thông tin cá nhân
             </div>
@@ -38,26 +29,37 @@ function UserInfo() {
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Họ tên</Form.Label>
-                            <Form.Control type="text" value={user.username} disabled />
+                            <Form.Control type="text" value={user.fullName} disabled />
+                        </Form.Group>
+                        <Form.Group className="col-md-12 mb-3 blog-checkbox">
+                            <Form.Label>Giới tính: </Form.Label>
+                            <div className="d-flex">
+                                <Form.Check className="me-3" type="radio" checked={user.sex === true} label="Nam" readOnly/>
+                                <Form.Check className="me-3" type="radio" checked={user.sex === false} label="Nữ" readOnly />
+                            </div>
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Số điện thoại</Form.Label>
-                            <Form.Control type="number" value={user.username} disabled />
+                            <Form.Control type="number" value={user.phoneNumber} disabled />
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" value={user.username} disabled />
+                            <Form.Control type="email" value={user.email} disabled />
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Ngày sinh</Form.Label>
-                            <Form.Control type="date" value={user.username} disabled />
+                            <Form.Control type="date" value={user.birth} disabled />
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Địa chỉ</Form.Label>
-                            <Form.Control type="text" value={user.username} disabled />
+                            <Form.Control type="text" value={user.address} disabled />
                         </Form.Group>
-                        <div className="mt-5 text-center">
-                            <Button type="submit">Chỉnh sửa</Button>
+                        <div className="mt-3 text-center">
+                            <Link to={"edit"}>
+                                <Button type="submit" >
+                                    Chỉnh sửa
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>

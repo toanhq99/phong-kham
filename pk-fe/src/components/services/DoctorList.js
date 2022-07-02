@@ -4,14 +4,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function DoctorList() {
-    const baseURL = "https:localhost:3000/users"
     const [doctors, setDoctors] = useState([]);
 
     const doctorInfo = () => {
         axios
-            .get(`${baseURL}`)
+            .get(`http://localhost:8084/User/GetAllDoctor`)
             .then((res) => {
-                setDoctors(res.data);
+                console.log(res.data.data);
+                setDoctors(res.data.data);
             })
             .catch((error) => console.log(error));
     }
@@ -58,17 +58,17 @@ function DoctorList() {
                                         </div>
                                         <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
                                             <h3 className="name">
-                                                <Link to={"/chi-tiet-bac-si/"}>{doctor.name}</Link>
+                                                <Link to={"/chi-tiet-bac-si/"}>{doctor.fullName}</Link>
                                             </h3>
-                                            <div className="specializations">{doctor.spectialty}</div>
+                                            <div className="specializations">{doctor.department.title}</div>
                                         </div>
                                         <div className="price-info d-flex justify-content-center align-items-center flex-column ">
                                             <div className="price-title">Giá khám</div>
-                                            <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">{doctor.price}đ</div>
+                                            <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">500000đ</div>
                                         </div>
                                         <div className="btn-footer">
-                                            <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card">
-                                                <Link to={"/chi-tiet-bac-si/"}>
+                                            <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card" >
+                                                <Link to={`detail/${doctor.id}`}>
                                                     <span>Đặt khám</span>
                                                 </Link>
                                             </Button>

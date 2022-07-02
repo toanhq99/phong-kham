@@ -18,6 +18,11 @@ import ServiceList from './components/services/ServiceList';
 import ServiceDetail from './components/services/ServiceDetail';
 import EditUserInfo from './components/profiles/EditUserInfo';
 import BookingInfo from './components/services/BookingInfo';
+import ListUser from './components/admin/ListUser';
+import ListDoctor from './components/admin/ListDoctor';
+import ListService from './components/admin/ListService';
+import EditDoctorInfo from './components/profiles/EditDoctorInfo';
+import AddDoctor from './components/admin/AddDoctor';
 
 function App() {
   return (
@@ -26,35 +31,45 @@ function App() {
       <Routes>
         <Route path='/' element={<AppHome />} />
 
-        <Route path='/login' element={<Login />} />
+        <Route path='/login/' element={<Login />} />
 
-        <Route path='/register' element={<Register />} />
+        <Route path='/register/' element={<Register />} />
 
-        <Route path='/bac-si' element={<DoctorList />} />
+        <Route path='/doctor/' element={<DoctorList />} />
 
-        <Route path='/bac-si/chi-tiet' element={<DoctorDetail />} />
+        <Route path='/doctor/detail/:id/' element={<DoctorDetail />} />
 
-        <Route path='/dich-vu' element={<ServiceList />} />
+        <Route path='/dich-vu/' element={<ServiceList />} />
 
-        <Route path='/chi-tiet-dich-vu' element={<ServiceDetail />} />
+        <Route path='/chi-tiet-dich-vu/' element={<ServiceDetail />} />
 
-        <Route path='/user/info' element={<UserInfo />} />
+        <Route path='/user/info/' element={<UserInfo />} />
 
-        <Route path='/user/info/edit' element={<EditUserInfo />} />
+        <Route path='/user/info/edit/' element={<EditUserInfo />} />
 
-        <Route path='/user/calendar' element={<UserCalendar />} />
+        <Route path='/user/calendar/' element={<UserCalendar />} />
 
-        <Route path='/thong-tin-dat-kham' element={<BookingInfo />} />
+        <Route path='/booking-info/' element={<BookingInfo />} />
 
-        <Route path='/user/health' element={<UserHealth />} />
+        <Route path='/user/health/' element={<UserHealth />} />
 
-        <Route path='/doctor/info' element={<DoctorInfo />} />
+        <Route path='/doctor/info/' element={<DoctorInfo />} />
+
+        <Route path='/doctor/info/edit/' element={<EditDoctorInfo />} />
 
         <Route path='/doctor/calendar' element={<DoctorCalendar />} />
 
-        <Route path='/doctor/add-new-record' element={<AddNewRecord />} />
+        <Route path='/doctor/add-new-record/' element={<AddNewRecord />} />
 
-        <Route path='/admin' element={<Admin />} />
+        <Route path='/admin/*' element={<Admin />}>
+          <Route path="list-users/" element={<ListUser />} />
+
+          <Route path="list-doctors/" element={<ListDoctor />} />
+
+          <Route path="add-doctor/" element={<AddDoctor />} />
+
+          <Route path="list-services/" element={<ListService />} />
+        </Route>
       </Routes>
       <AppFooter />
     </div>
