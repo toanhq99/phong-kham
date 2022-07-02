@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router";
@@ -69,29 +69,36 @@ function Register() {
 
     const registerSubmit = (e) => {
         e.preventDefault();
-        handleValidation();
         console.log(username + " " + password);
         axios
             .post('http://localhost:8084/api/auth/register', {
                 emal: email,
                 userName: username,
                 password: password,
-                level: 3
+                level: 1
             })
             .then((res) => {
                 console.log(res);
                 if (res.data.data == null) {
                     localStorage.removeItem("accessToken");
+                    handleValidation();
                     alert("Tên đăng nhập hoặc email đã tồn tại");
                     navigate("/register");
                 } else {
                     localStorage.setItem("accessToken", JSON.stringify(res.data.data));
+                    handleValidation();
                     alert("Đăng kí thành công")
                     navigate("/");
                 }
             })
             .catch((err) => console.log(err));
     };
+
+    useEffect(() => {
+        handleValidation();
+
+        
+    });
 
     return (
         <Container>

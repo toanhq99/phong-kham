@@ -4,45 +4,41 @@ import axios from "axios";
 import { Link } from "react-router-dom"
 
 function DoctorCalendar() {
-    const [calendar, setCalendar] = useState("");
+    const [calendar, setCalendar] = useState([]);
 
     const doctor = JSON.parse(localStorage.getItem("accessToken"));
 
-    const doctorCalendar = () => {
+    useEffect(() => {
         axios
-            .get(`http://localhost:8084/TimeWork/getAllByIdDoctor/${doctor.id}`)
+            .get('http://localhost:8084/TimeOder/getAllTimeOderByDoctorId/' + doctor.id)
             .then((res) => {
-                setCalendar(res.data.data)
+                setCalendar(res.data.data);
             })
             .catch((err) => console.log(err));
-    }
-
-    useEffect(() => {
-        doctorCalendar();
-    });
+    },[doctor.id]);
 
     return (
         <Container>
-            <div className="mt-5 text-center">
+            <div className="mt-4 text-center">
                 <h2>Lịch khám hôm nay</h2>
             </div>
-            <Container className="mt-5 w-75 h-25">
+            <Container className="mt-4 w-75 h-25">
                 {calendar?.map((cal) => (
-                    <Card>
-                        <Card.Header as="h5">{cal.appointmentHour}, {cal.customerName}</Card.Header>
+                    <Card key={cal.id} className="mt-3">
+                        <Card.Header as="h5">{cal.time}</Card.Header>
                         <Card.Body>
-                            <Card.Title>Khách hàng: {cal.customerName}</Card.Title>
+                            <Card.Title>Khách hàng: {cal.user.fullName}</Card.Title>
                             <Card.Text>
-                                Giờ khám: {cal.appointmentHour}
+                                Giờ khám: {cal.time}
                             </Card.Text>
                             <Card.Text>
                                 Triệu chứng: {cal.symptom}
                             </Card.Text>
-                            <Button>
-                                <Link to={'/user-health'}>
+                            <Link to={'/user/health/' + cal.user.id}>
+                                <Button>
                                     Xem hồ sơ bệnh án
-                                </Link>
-                            </Button>
+                                </Button>
+                            </Link>
                         </Card.Body>
                     </Card>
                 ))}

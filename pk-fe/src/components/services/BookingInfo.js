@@ -2,20 +2,22 @@ import { Container, Card, Button, Form } from "react-bootstrap"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { useParams } from "react-router";
 
 function BookingInfo() {
     const [symptom, setSymptom] = useState("");
     const [user, setUser] = useState([]);
     const [bookInfo, setBookInfo] = useState([]);
     let navigate = useNavigate();
+    const { id } = useParams();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         axios
-            .post('http://localhost:8084/TimeOder/createTimeOder', {
-                time: bookInfo.day+"T"+bookInfo.hour,
-                time_oder:bookInfo.day+"T"+bookInfo.hour,
+            .post(`http://localhost:8084/TimeOder/createTimeOder/${user.id}/${id}`, {
+                time: bookInfo.day + "T" + bookInfo.hour,
+                time_oder: bookInfo.day + "T" + bookInfo.hour,
                 symptom: symptom
             })
             .then((res) => {

@@ -30,7 +30,7 @@ function AppHeader() {
             )
         }
         else {
-            if (user.role === "User") {
+            if (user.level === 3) {
                 return (
                     <NavDropdown title={"Xin chào, " + haveName()} id="collasible-nav-dropdown">
                         <NavDropdown.Item href="/user/info">Thông tin cá nhân</NavDropdown.Item>
