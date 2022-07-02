@@ -13,13 +13,19 @@ function AppHeader() {
     }
 
     const haveName = () => {
-        if (user.fullName==null) {
+        if (!user.fullName) {
             return user.username;
         } else {
             return user.fullName;
         }
     }
-
+    
+    useEffect(() => {
+        const users = JSON.parse(localStorage.getItem("accessToken"));
+        if (users) {
+            setUser(users);
+        }
+    }, []);
     const isLogin = () => {
         if (!localStorage.getItem("accessToken")) {
             return (
@@ -50,22 +56,15 @@ function AppHeader() {
                 )
                 return (
                     <NavDropdown title={"Xin chào, " + haveName()} id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="/doctor/info">Thông tin cá nhân</NavDropdown.Item>
+                        {/* <NavDropdown.Item href="/doctor/info">Thông tin cá nhân</NavDropdown.Item> */}
                         <NavDropdown.Item href="/admin">Quản lý User </NavDropdown.Item>
-                        <NavDropdown.Item href="/doctor/calendar">Lịch khám trong ngày</NavDropdown.Item>
+                        {/* <NavDropdown.Item href="/doctor/calendar">Lịch khám trong ngày</NavDropdown.Item> */}
                         <NavDropdown.Item onClick={logout}>Đăng xuất</NavDropdown.Item>
                     </NavDropdown>
                 )
             }
         }
     }
-
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("accessToken"));
-        if (user) {
-            setUser(user);
-        }
-    }, []);
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="light">

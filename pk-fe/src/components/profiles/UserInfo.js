@@ -6,9 +6,10 @@ function UserInfo() {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("accessToken"));
-        if (user) {
-            setUser(user);
+        const users = JSON.parse(localStorage.getItem("accessToken"));
+        if (users) {
+            setUser(users);
+            console.log(user);
         }
     }, []);
 

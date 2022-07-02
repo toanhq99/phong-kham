@@ -60,7 +60,7 @@ function DoctorList() {
                                             <h3 className="name">
                                                 <Link to={"/chi-tiet-bac-si/"}>{doctor.fullName}</Link>
                                             </h3>
-                                            <div className="specializations">{doctor.department.title}</div>
+                                            <div className="specializations">{doctor.department!=null?doctor.department.title:"Chuyên khoa"}</div>
                                         </div>
                                         <div className="price-info d-flex justify-content-center align-items-center flex-column ">
                                             <div className="price-title">Giá khám</div>

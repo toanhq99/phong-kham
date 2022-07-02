@@ -65,11 +65,11 @@ function DoctorInfo() {
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Chuyên khoa</Form.Label>
-                            <Form.Control type="text" value={doctor.department} disabled />
+                            <Form.Control type="text" value={doctor.department.title} disabled />
                         </Form.Group>
                         <Form.Group className="col-md-12 mb-3">
                             <Form.Label>Kinh nghiệm làm việc</Form.Label>
-                            <Form.Control as="textarea" rows={6} value={doctor.department} disabled />
+                            <Form.Control as="textarea" rows={6} value={doctor.department.detail} disabled />
                         </Form.Group>
                         <div className="mt-1 text-center">
                             <Link to={"/doctor/info/edit/"}>

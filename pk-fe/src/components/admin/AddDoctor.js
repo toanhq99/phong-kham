@@ -85,9 +85,9 @@ function AddDoctor() {
                     alert("Tên đăng nhập hoặc email đã tồn tại");
                     navigate("/register");
                 } else {
-                    localStorage.setItem("accessToken", JSON.stringify(res.data.data));
+                   // localStorage.setItem("accessToken", JSON.stringify(res.data.data));
                     alert("Đăng kí thành công")
-                    navigate("/");
+                   // navigate("/");
                 }
             })
             .catch((err) => console.log(err));

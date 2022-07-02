@@ -46,8 +46,8 @@ function ListDoctor() {
                             <td>{doctor.username}</td>
                             <td>{doctor.phoneNumber}</td>
                             <td>{doctor.email}</td>
-                            <td>{doctor.department.title}</td>
-                            <td>{doctor.department.detail}</td>
+                            <td>{doctor.department!=null?doctor.department.title:""}</td>
+                            <td>{doctor.department!=null?doctor.department.detail:""}</td>
                         </tr>
                     ))}
                 </tbody>
