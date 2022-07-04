@@ -53,9 +53,9 @@ function DoctorList() {
                             <div className="text-center">
                                 <Card.Img variant="top" className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" />
                             </div>
-                            <Card.Header as="h5" className="text-center">{doctor.fullName}</Card.Header>
+                            <Card.Header as="h5" className="text-center">{doctor.fullName==null?"Null":doctor.fullName}</Card.Header>
                             <Card.Body>
-                                <Card.Title>{doctor.department.title}</Card.Title>
+                                <Card.Title>{doctor.department==null?"Null":doctor.department.title}</Card.Title>
                                 <Card.Text>Giá khám: 300000đ</Card.Text>
                                 <Link to={`detail/${doctor.id}`}>
                                     <Button variant="success">Đặt khám</Button>

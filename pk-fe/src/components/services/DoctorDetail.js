@@ -5,13 +5,11 @@ import { Link, useParams } from "react-router-dom";
 
 function DoctorDetail() {
     let today = new Date();
+    let date = today.getFullYear() + "-0" + parseInt(today.getMonth() + 1) + "-0" + today.getDate();
     const { id } = useParams();
     const [doctor, setDoctor] = useState([]);
-    const [bookDay, setBookDay] = useState(today.getFullYear() + "-0" + parseInt(today.getMonth() + 1) + "-0" + today.getDate()    );
-    const [bookHour, setBookHour] = useState("initialState");
-
-
-    let date = today.getFullYear() + "-0" + parseInt(today.getMonth() + 1) + "-0" + today.getDate();
+    const [bookDay, setBookDay] = useState(date);
+    const [bookHour, setBookHour] = useState(null);
 
     const getDoctor = () => {
         axios
@@ -28,24 +26,24 @@ function DoctorDetail() {
             day: bookDay
         }))
     }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const changeDay=(e)=>{
+        setBookDay(e);
         setTime();
-        console.log(bookDay);
+    }
+    const changeHour=(e)=>{
+        setBookHour(e);
+        setTime();
+    }
+    const handleSubmit = (e) => {
+        setTime();
     };
 
     useEffect(() => {
         getDoctor();
         setTime();
-<<<<<<< HEAD
+    },[bookDay,bookHour]);
 
-    }, []);
-=======
-    },[]);
->>>>>>> ae4c8a1ecd62bdb2876e338c1989463370454744
 
-   // console.log(new Date());
     const defaultsettime = ()=>{
        return new Date();
     }
@@ -81,11 +79,11 @@ function DoctorDetail() {
                         <div className="group-time-picker">
                             <div className="head-time-picker">
                                 <div className="label-time-picker">Lịch tư vấn trực tuyến</div>
-                                <Form.Control className='mx-3 w-25' type='date' defaultValue={date} onChange={(e) => setBookDay(e.target.value)} />
+                                <Form.Control className='mx-3 w-25' type='date' defaultValue={date} onChange={(e) => changeDay(e.target.value)} />
                             </div>
                             <Form.Group className="d-flex mb-4">
-                                <Form.Check className="me-3" type="radio" name="isPublic" label="11:00" onClick={() => setBookHour("11:00:00.00")} />
-                                <Form.Check className="me-3" type="radio" name="isPublic" label="12:00" onClick={() => setBookHour("12:00:00.00")} />
+                                <Form.Check className="me-3" type="radio" name="isPublic" label="11:00" onClick={() => changeHour("11:00:00.00")} />
+                                <Form.Check className="me-3" type="radio" name="isPublic" label="12:00" onClick={() => changeHour("12:00:00.00")} />
                             </Form.Group>
                         </div>
                         <Link to={`/booking-info/${id}`}>

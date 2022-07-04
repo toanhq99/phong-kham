@@ -39,7 +39,6 @@ function BookingInfo() {
         const bookInfo = JSON.parse(localStorage.getItem("bookingInfo"));
         if (bookInfo) {
             setBookInfo(bookInfo);
-
         }
     }, []);
 
