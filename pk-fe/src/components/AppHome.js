@@ -1,5 +1,7 @@
-import { Container, Button } from "react-bootstrap"
+import { Container, Button, Card } from "react-bootstrap"
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BsFillArrowRightSquareFill } from "react-icons/bs";
 
 function AppHome() {
     return (
@@ -40,7 +42,60 @@ function AppHome() {
                         </div>
                     </Container>
                 </div>
-                <div className="w-100 h-100 mb-6 pd-3 position-relative">
+                {/* Dich vu hot */}
+                <Container className="m-5">
+                    <h2>Dịch vụ nổi bật</h2>
+                    <div className="text-end">
+                        <Link to={"/service"}>
+                            <Button variant="success">
+                                Tất cả dịch vụ {" "}
+                                <BsFillArrowRightSquareFill/>
+                            </Button>
+                        </Link>
+                    </div>
+                    <Container className="d-flex gap-3 flex-wrap justify-content-center my-4">
+                        <Card style={{ width: '25%', height: '20%' }}>
+                            <div className="text-center m-2">
+                                <Card.Img variant="top" style={{ width: '100%' }} src="https://isofhcare.com/_next/image?url=https%3A%2F%2Fisofhcare-backup.s3-ap-southeast-1.amazonaws.com%2Fimages%2Ftiem-chung-7-jpg_51b88195_127e_4ae7_8800_9bdb12fee0f6.png&w=1920&q=75" />
+                            </div>
+                            <Card.Body>
+                                <Card.Title>1111</Card.Title>
+                                <Card.Title as="h6">2222</Card.Title>
+                                <Card.Text>Giá khám: 300000đ</Card.Text>
+                                <Link to={`/detail/`}>
+                                    <Button variant="success">Đặt khám</Button>
+                                </Link>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '25%', height: '20%' }}>
+                            <div className="text-center m-2">
+                                <Card.Img variant="top" style={{ width: '100%' }} src="https://isofhcare.com/_next/image?url=https%3A%2F%2Fisofhcare-backup.s3-ap-southeast-1.amazonaws.com%2Fimages%2Ftiem-chung-7-jpg_51b88195_127e_4ae7_8800_9bdb12fee0f6.png&w=1920&q=75" />
+                            </div>
+                            <Card.Body>
+                                <Card.Title>1111</Card.Title>
+                                <Card.Title as="h6">2222</Card.Title>
+                                <Card.Text>Giá khám: 300000đ</Card.Text>
+                                <Link to={`detail/`}>
+                                    <Button variant="success">Đặt khám</Button>
+                                </Link>
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '25%', height: '20%' }}>
+                            <div className="text-center m-2">
+                                <Card.Img variant="top" style={{ width: '100%' }} src="https://isofhcare.com/_next/image?url=https%3A%2F%2Fisofhcare-backup.s3-ap-southeast-1.amazonaws.com%2Fimages%2Ftiem-chung-7-jpg_51b88195_127e_4ae7_8800_9bdb12fee0f6.png&w=1920&q=75" />
+                            </div>
+                            <Card.Body>
+                                <Card.Title>1111</Card.Title>
+                                <Card.Title as="h6">2222</Card.Title>
+                                <Card.Text>Giá khám: 300000đ</Card.Text>
+                                <Link to={`detail/`}>
+                                    <Button variant="success">Đặt khám</Button>
+                                </Link>
+                            </Card.Body>
+                        </Card>
+                    </Container>
+                </Container>
+                {/* <div className="w-100 h-100 mb-6 pd-3 position-relative">
                     <div className="w-100 container-hot-service">
                         <div className="d-flex justify-content-between align-items-center header">
                             <h2>Dịch vụ nổi bật</h2>
@@ -117,7 +172,7 @@ function AppHome() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <Container className="justify-content-center">
                     <div className="row">
                         <div className="col col-xs-12 col-sm-8 col-xl-6 w-25">

@@ -49,7 +49,7 @@ function DoctorList() {
                 <h2>Chọn bác sĩ</h2>
                 <Container className="d-flex gap-3 flex-wrap justify-content-center my-4">
                     {doctors?.map((doctor) => (
-                        <Card key={doctor.id} className="text-center" style={{ maxWidth: '100%', width: '24%', height: '25%' }}>
+                        <Card key={doctor.id} className="text-center" style={{ maxWidth: '100%', width: '24%', maxHeight: '25%' }}>
                             <div className="text-center">
                                 <Card.Img variant="top" className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" />
                             </div>
