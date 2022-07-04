@@ -47,18 +47,21 @@ function Login() {
             .then((res) => {
                 console.log(res);
                 if (res.data.data == null) {
-                    navigate("/login");
                     localStorage.removeItem("accessToken");
                     alert("Tên đăng nhập hoặc mật khẩu không đúng");
-
+                    console.log(res.data.data);
+                    navigate("/login");
                 } else {
-                    navigate("/");
                     localStorage.setItem("accessToken", JSON.stringify(res.data.data));
+                    navigate("/");
                 }
             })
             .catch((err) => console.log(err));
     };
 
+    useEffect(()=>{
+        
+    })
     return (
         <Container>
             <div className="row d-flex justify-content-center">

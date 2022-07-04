@@ -1,4 +1,4 @@
-import { Container, Form, FormControl, Button } from "react-bootstrap";
+import { Container, Form, FormControl, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -47,40 +47,26 @@ function DoctorList() {
             </div>
             <Container>
                 <h2>Chọn bác sĩ</h2>
-                <div className="row">
+                <Container className="d-flex gap-3 flex-wrap justify-content-center my-4">
                     {doctors?.map((doctor) => (
-                        <div key={doctor.id}>
-                            <div className="col col-xs-12 col-sm-8 col-xl-6 w-25">
-                                <div className="w-100 h-100 position-relative d-flex align-items-center">
-                                    <div className="py-4 px-3">
-                                        <div className="position-relative align-items-center d-flex justify-content-center logo">
-                                            <img className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" alt="" />
-                                        </div>
-                                        <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
-                                            <h3 className="name">
-                                                <Link to={"/chi-tiet-bac-si/"}>{doctor.fullName}</Link>
-                                            </h3>
-                                            <div className="specializations">{doctor.department.title}</div>
-                                        </div>
-                                        <div className="price-info d-flex justify-content-center align-items-center flex-column ">
-                                            <div className="price-title">Giá khám</div>
-                                            <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">500000đ</div>
-                                        </div>
-                                        <div className="btn-footer">
-                                            <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card" >
-                                                <Link to={`detail/${doctor.id}`}>
-                                                    <span>Đặt khám</span>
-                                                </Link>
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </div>
+                        <Card key={doctor.id} className="text-center" style={{ maxWidth: '100%', width: '24%', height: '25%' }}>
+                            <div className="text-center">
+                                <Card.Img variant="top" className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" />
                             </div>
-                        </div>
+                            <Card.Header as="h5" className="text-center">{doctor.fullName}</Card.Header>
+                            <Card.Body>
+                                <Card.Title>{doctor.department.title}</Card.Title>
+                                <Card.Text>Giá khám: 300000đ</Card.Text>
+                                <Link to={`detail/${doctor.id}`}>
+                                    <Button variant="success">Đặt khám</Button>
+                                </Link>
+                            </Card.Body>
+                        </Card>
                     ))}
-                </div>
+                </Container>
             </Container>
         </div>
     )
 }
+
 export default DoctorList;

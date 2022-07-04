@@ -36,7 +36,7 @@ function DoctorCalendar() {
                                 Triệu chứng: {cal.symptom}
                             </Card.Text>
                             <Link to={'/user/health/' + cal.user.id}>
-                                <Button>
+                                <Button onClick={localStorage.setItem("timeId", cal.id)}>
                                     Xem hồ sơ bệnh án
                                 </Button>
                             </Link>
