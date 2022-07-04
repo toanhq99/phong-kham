@@ -66,7 +66,7 @@ function AppHeader() {
         }
         isLogin();
         haveName();
-    },[]);
+    },[localStorage.getItem("accessToken")]);
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="light">
