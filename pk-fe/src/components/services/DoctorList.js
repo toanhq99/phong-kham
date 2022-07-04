@@ -5,6 +5,7 @@ import axios from "axios";
 
 function DoctorList() {
     const [doctors, setDoctors] = useState([]);
+    const [name,setName] =useState("");
 
     const doctorInfo = () => {
         axios
@@ -19,6 +20,24 @@ function DoctorList() {
     useEffect(() => {
         doctorInfo();
     }, []);
+
+    const searchTitleBlog = (textTitle) => {
+        axios.get(`http://localhost:8084/User/findDoctorLikeName/${textTitle}`)
+            .then((res) => {
+                setDoctors(res.data.data);
+            })
+            .catch((error) => console.log(error)
+            );
+    };
+
+    // useEffect((name) => {
+    //     axios.get(`http://localhost:8084/User/findDoctorLikeName/${name}`)
+    //         .then((res) => {
+    //             setDoctors(res.data.data);
+    //             console.log(res.data.data);
+    //         })
+    //         .catch((error) => console.log(error));
+    // }, [name]);
 
     return (
         <div className="w-100 h-100 pb-0">
@@ -36,7 +55,11 @@ function DoctorList() {
                                             placeholder="Tìm bác sĩ..."
                                             className="w-50"
                                             aria-label="Search"
+                                            onChange={(e)=>{setName(e.target.value)}}
                                         />
+                                        <div className='button'>
+                                    <Button variant="outline-success" onClick={() => {searchTitleBlog(name)}}>Search</Button>
+                                </div>
                                     </Form>
                                 </div>
                             </div>
@@ -53,9 +76,9 @@ function DoctorList() {
                             <div className="text-center">
                                 <Card.Img variant="top" className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" />
                             </div>
-                            <Card.Header as="h5" className="text-center">{doctor.fullName==null?"Null":doctor.fullName}</Card.Header>
                             <Card.Body>
-                                <Card.Title>{doctor.department==null?"Null":doctor.department.title}</Card.Title>
+                                <Card.Title  className="text-center">{doctor.fullName == null ? "Null" : doctor.fullName}</Card.Title>
+                                <Card.Title as="h6">{doctor.department == null ? "Null" : doctor.department.title}</Card.Title>
                                 <Card.Text>Giá khám: 300000đ</Card.Text>
                                 <Link to={`detail/${doctor.id}`}>
                                     <Button variant="success">Đặt khám</Button>

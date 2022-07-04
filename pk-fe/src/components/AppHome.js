@@ -1,6 +1,5 @@
 import { Container, Button, Card } from "react-bootstrap"
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 
 function AppHome() {
@@ -44,15 +43,16 @@ function AppHome() {
                 </div>
                 {/* Dich vu hot */}
                 <Container className="m-5">
-                    <h2>Dịch vụ nổi bật</h2>
-                    <div className="text-end">
+                    <Container className="d-flex">
+                        <h2>Dịch vụ nổi bật</h2>
+                        <div className="me-auto"></div>
                         <Link to={"/service"}>
                             <Button variant="success">
                                 Tất cả dịch vụ {" "}
-                                <BsFillArrowRightSquareFill/>
+                                <BsFillArrowRightSquareFill />
                             </Button>
                         </Link>
-                    </div>
+                    </Container>
                     <Container className="d-flex gap-3 flex-wrap justify-content-center my-4">
                         <Card style={{ width: '25%', height: '20%' }}>
                             <div className="text-center m-2">
@@ -87,7 +87,7 @@ function AppHome() {
                             <Card.Body>
                                 <Card.Title>1111</Card.Title>
                                 <Card.Title as="h6">2222</Card.Title>
-                                <Card.Text>Giá khám: 300000đ</Card.Text>
+                                <Card.Text>Giá khám: 300,000đ</Card.Text>
                                 <Link to={`detail/`}>
                                     <Button variant="success">Đặt khám</Button>
                                 </Link>
@@ -95,194 +95,72 @@ function AppHome() {
                         </Card>
                     </Container>
                 </Container>
-                {/* <div className="w-100 h-100 mb-6 pd-3 position-relative">
-                    <div className="w-100 container-hot-service">
-                        <div className="d-flex justify-content-between align-items-center header">
-                            <h2>Dịch vụ nổi bật</h2>
-                            <Link to={"/dich-vu"}>
-                                Xem tất cả
-                                <span className="ml-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                                    </svg>
-                                </span>
-                            </Link>
-                        </div>
-                        <div className="body">
-                            <div className="d-flex align-items-center overflow-hidden position-relative">
-                                <ul className="m-0 p-0 d-flex position-relative multi-track">
-                                    <li className="multi-item position-relative">
-                                        <div className="hot-service-item">
-                                            <div className="hot-service-item-box w-100 h-100 justify-content-between d-flex">
-                                                <div className="top">
-                                                    <div className="image">
-                                                        <div className="d-block overflow-hidden position-absolute m-0 image-box">
-                                                            <img className="image-box-content" src="https://isofhcare.com/_next/image?url=https%3A%2F%2Fisofhcare-backup.s3-ap-southeast-1.amazonaws.com%2Fimages%2F15-png_f8b7b56a_b2eb_47af_aa27_36243ad5deaf.png&w=1920&q=75" alt="" />
-                                                        </div>
-                                                    </div>
-                                                    <Link to={"/chi-tiet-dich-vu"}>
-                                                        <h3>Khám Tai Mũi Họng với PGS Hoài An</h3>
-                                                    </Link>
-                                                </div>
-                                                <div className="price">
-                                                    1.562.000 đ
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li className="multi-item position-relative">
-                                        <div className="hot-service-item">
-                                            <div className="hot-service-item-box w-100 h-100 justify-content-between d-flex">
-                                                <div className="top">
-                                                    <div className="image">
-                                                        <div className="d-block overflow-hidden position-absolute m-0 image-box">
-                                                            <img className="image-box-content" src="https://isofhcare.com/_next/image?url=https%3A%2F%2Fisofhcare-backup.s3-ap-southeast-1.amazonaws.com%2Fimages%2F15-png_f8b7b56a_b2eb_47af_aa27_36243ad5deaf.png&w=1920&q=75" alt="" />
-                                                        </div>
-                                                    </div>
-                                                    <Link to={"/chi-tiet-dich-vu"}>
-                                                        <h3>Khám Tai Mũi Họng với PGS Hoài An</h3>
-                                                    </Link>
-                                                </div>
-                                                <div className="price">
-                                                    1.562.000 đ
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li className="multi-item position-relative">
-                                        <div className="hot-service-item">
-                                            <div className="hot-service-item-box w-100 h-100 justify-content-between d-flex">
-                                                <div className="top">
-                                                    <div className="image">
-                                                        <div className="d-block overflow-hidden position-absolute m-0 image-box">
-                                                            <img className="image-box-content" src="https://isofhcare.com/_next/image?url=https%3A%2F%2Fisofhcare-backup.s3-ap-southeast-1.amazonaws.com%2Fimages%2F15-png_f8b7b56a_b2eb_47af_aa27_36243ad5deaf.png&w=1920&q=75" alt="" />
-                                                        </div>
-                                                    </div>
-                                                    <Link to={"/chi-tiet-dich-vu"}>
-                                                        <h3>Khám Tai Mũi Họng với PGS Hoài An</h3>
-                                                    </Link>
-                                                </div>
-                                                <div className="price">
-                                                    1.562.000 đ
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                {/* Hot Doctor */}
+                <Container>
+                    <Container className="d-flex">
+                        <h2>Bác sĩ nổi bật</h2>
+                        <div className="me-auto"></div>
+                        <Link to={"/doctor"}>
+                            <Button variant="success">
+                                Tất cả bác sĩ {" "}
+                                <BsFillArrowRightSquareFill />
+                            </Button>
+                        </Link>
+                    </Container>
+                    <Container className="d-flex gap-3 flex-wrap justify-content-center my-4">
+                        <Card className="text-center" style={{ maxWidth: '100%', width: '24%', maxHeight: '25%' }}>
+                            <div className="text-center">
+                                <Card.Img variant="top" className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" />
                             </div>
-                        </div>
-                    </div>
-                </div> */}
-                <Container className="justify-content-center">
-                    <div className="row">
-                        <div className="col col-xs-12 col-sm-8 col-xl-6 w-25">
-                            <div className="w-100 h-100 position-relative d-flex align-items-center">
-                                <div className="py-4 px-3">
-                                    <div className="position-relative align-items-center d-flex justify-content-center logo">
-                                        <img className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" alt="" />
-                                    </div>
-                                    <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
-                                        <h3 className="name">
-                                            <Link to={"/chi-tiet-bac-si/"}>PGS.TS.  Phạm Thị Bích Đào</Link>
-                                        </h3>
-                                        <div className="specializations">Chuyên khoa Tai Mũi Họng </div>
-                                    </div>
-                                    <div className="price-info d-flex justify-content-center align-items-center flex-column ">
-                                        <div className="price-title">Giá khám</div>
-                                        <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">5000000đ</div>
-                                    </div>
-                                    <div className="btn-footer">
-                                        <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card">
-                                            <Link to={"/chi-tiet-bac-si/"}>
-                                                <span>Đặt khám</span>
-                                            </Link>
-                                        </Button>
-                                    </div>
-                                </div>
+                            <Card.Body>
+                                <Card.Title>ABC</Card.Title>
+                                <Card.Title as="h6">ABC</Card.Title>
+                                <Card.Text>Giá khám: 300000đ</Card.Text>
+                                <Link to={`/detail/`}>
+                                    <Button variant="success">Đặt khám</Button>
+                                </Link>
+                            </Card.Body>
+                        </Card>
+                        <Card className="text-center" style={{ maxWidth: '100%', width: '24%', maxHeight: '25%' }}>
+                            <div className="text-center">
+                                <Card.Img variant="top" className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" />
                             </div>
-                        </div>
-                        <div className="col col-lg-3">
-                            <div className="w-100 h-100 position-relative d-flex align-items-center">
-                                <div className="py-4 px-3">
-                                    <div className="position-relative align-items-center d-flex justify-content-center logo">
-                                        <img className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" alt="" />
-                                    </div>
-                                    <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
-                                        <h3 className="name">
-                                            <Link to={"/chi-tiet-bac-si/"}>PGS.TS.  Phạm Thị Bích Đào</Link>
-                                        </h3>
-                                        <div className="specializations">Chuyên khoa Tai Mũi Họng </div>
-                                    </div>
-                                    <div className="price-info d-flex justify-content-center align-items-center flex-column ">
-                                        <div className="price-title">Giá khám</div>
-                                        <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">5000000đ</div>
-
-                                    </div>
-                                    <div className="btn-footer">
-                                        <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card">
-                                            <Link to={"/chi-tiet-bac-si/"}>
-                                                <span>Đặt khám</span>
-                                            </Link>
-                                        </Button>
-                                    </div>
-                                </div>
+                            <Card.Body>
+                                <Card.Title>ABC</Card.Title>
+                                <Card.Title as="h6">ABC</Card.Title>
+                                <Card.Text>Giá khám: 300000đ</Card.Text>
+                                <Link to={`/detail/`}>
+                                    <Button variant="success">Đặt khám</Button>
+                                </Link>
+                            </Card.Body>
+                        </Card>
+                        <Card className="text-center" style={{ maxWidth: '100%', width: '24%', maxHeight: '25%' }}>
+                            <div className="text-center">
+                                <Card.Img variant="top" className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" />
                             </div>
-                        </div>
-                        <div className="col col-lg-3">
-                            <div className="w-100 h-100 position-relative d-flex align-items-center">
-                                <div className="py-4 px-3">
-                                    <div className="position-relative align-items-center d-flex justify-content-center logo">
-                                        <img className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" alt="" />
-                                    </div>
-                                    <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
-                                        <h3 className="name">
-                                            <Link to={"/chi-tiet-bac-si/"}>PGS.TS.  Phạm Thị Bích Đào</Link>
-                                        </h3>
-                                        <div className="specializations">Chuyên khoa Tai Mũi Họng </div>
-                                    </div>
-                                    <div className="price-info d-flex justify-content-center align-items-center flex-column ">
-                                        <div className="price-title">Giá khám</div>
-                                        <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">5000000đ</div>
-
-                                    </div>
-                                    <div className="btn-footer">
-                                        <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card">
-                                            <Link to={"/chi-tiet-bac-si/"}>
-                                                <span>Đặt khám</span>
-                                            </Link>
-                                        </Button>
-                                    </div>
-                                </div>
+                            <Card.Body>
+                                <Card.Title>ABC</Card.Title>
+                                <Card.Title as="h6">ABC</Card.Title>
+                                <Card.Text>Giá khám: 300000đ</Card.Text>
+                                <Link to={`/detail/`}>
+                                    <Button variant="success">Đặt khám</Button>
+                                </Link>
+                            </Card.Body>
+                        </Card>
+                        <Card className="text-center" style={{ maxWidth: '100%', width: '24%', maxHeight: '25%' }}>
+                            <div className="text-center">
+                                <Card.Img variant="top" className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" />
                             </div>
-                        </div>
-                        <div className="col col-lg-3">
-                            <div className="w-100 h-100 position-relative d-flex align-items-center">
-                                <div className="py-4 px-3">
-                                    <div className="position-relative align-items-center d-flex justify-content-center logo">
-                                        <img className="avatar" src="https://isofhcare-backup.s3-ap-southeast-1.amazonaws.com/images/test_b6fdadb7_445d_4a6a_ac5c_0ad3c31cdd67.png" alt="" />
-                                    </div>
-                                    <div className="info pt-3 pb-4 h-auto d-flex justify-content-between info">
-                                        <h3 className="name">
-                                            <Link to={"/chi-tiet-bac-si/"}>PGS.TS.  Phạm Thị Bích Đào</Link>
-                                        </h3>
-                                        <div className="specializations">Chuyên khoa Tai Mũi Họng </div>
-                                    </div>
-                                    <div className="price-info d-flex justify-content-center align-items-center flex-column ">
-                                        <div className="price-title">Giá khám</div>
-                                        <div className="price-detail text-align-right d-flex align-items-center justify-content-flex-end">5000000đ</div>
-                                    </div>
-                                    <div className="btn-footer">
-                                        <Button className="w-100 d-flex align-items-center justify-content-center btn-footer-card">
-                                            <Link to={"/chi-tiet-bac-si/"}>
-                                                <span>Đặt khám</span>
-                                            </Link>
-                                        </Button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                            <Card.Body>
+                                <Card.Title>ABC</Card.Title>
+                                <Card.Title as="h6">ABC</Card.Title>
+                                <Card.Text>Giá khám: 300000đ</Card.Text>
+                                <Link to={`/detail/`}>
+                                    <Button variant="success">Đặt khám</Button>
+                                </Link>
+                            </Card.Body>
+                        </Card>
+                    </Container>
                 </Container>
             </div>
 

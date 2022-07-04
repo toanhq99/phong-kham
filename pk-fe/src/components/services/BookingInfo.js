@@ -16,8 +16,7 @@ function BookingInfo() {
 
         axios
             .post(`http://localhost:8084/TimeOder/createTimeOder/${user.id}/${id}`, {
-                time: bookInfo.day + "T" + bookInfo.hour,
-                time_oder: bookInfo.day + "T" + bookInfo.hour,
+                time: bookInfo.day + "T" + bookInfo.hour+"Z",
                 symptom: symptom
             })
             .then((res) => {
