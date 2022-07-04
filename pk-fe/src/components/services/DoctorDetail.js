@@ -7,7 +7,7 @@ function DoctorDetail() {
     let today = new Date();
     const { id } = useParams();
     const [doctor, setDoctor] = useState([]);
-    const [bookDay, setBookDay] = useState(today.getFullYear() + "-0" + parseInt(today.getMonth() + 1) + "-0" + today.getDate()    );
+    const [bookDay, setBookDay] = useState(today.getFullYear() + "-0" + parseInt(today.getMonth() + 1) + "-0" + today.getDate());
     const [bookHour, setBookHour] = useState("initialState");
 
 
@@ -38,17 +38,8 @@ function DoctorDetail() {
     useEffect(() => {
         getDoctor();
         setTime();
-<<<<<<< HEAD
+    });
 
-    }, []);
-=======
-    },[]);
->>>>>>> ae4c8a1ecd62bdb2876e338c1989463370454744
-
-   // console.log(new Date());
-    const defaultsettime = ()=>{
-       return new Date();
-    }
     return (
         <Container className="py-6">
             <div className="d-flex align-items-center mb-3">

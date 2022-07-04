@@ -24,7 +24,7 @@ function BookingInfo() {
                 console.log(res.data);
                 localStorage.removeItem("bookingInfo");
                 alert("Đặt lịch thành công")
-                // navigate("/")
+                navigate("/doctor")
             })
             .catch((error) => console.log(error)
             );
