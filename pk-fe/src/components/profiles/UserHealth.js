@@ -5,6 +5,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 function UserHealth() {
+
     const [user, setUser] = useState([]);
     const userInfo = JSON.parse(localStorage.getItem("accessToken"));
     const { id } = useParams();
@@ -20,8 +21,16 @@ function UserHealth() {
                 </div>
             )
         }
-    }
 
+    }
+    const  getUser=()=>{
+        const users = JSON.parse(localStorage.getItem("accessToken"));
+        if (users) {
+            setUser(users);
+            console.log(user);
+        }
+    }
+   
     useEffect(() => {
 
         axios

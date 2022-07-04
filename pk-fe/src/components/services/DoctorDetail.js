@@ -38,9 +38,17 @@ function DoctorDetail() {
     useEffect(() => {
         getDoctor();
         setTime();
+<<<<<<< HEAD
 
     }, []);
+=======
+    },[]);
+>>>>>>> ae4c8a1ecd62bdb2876e338c1989463370454744
 
+   // console.log(new Date());
+    const defaultsettime = ()=>{
+       return new Date();
+    }
     return (
         <Container className="py-6">
             <div className="d-flex align-items-center mb-3">
