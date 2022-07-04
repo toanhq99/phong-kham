@@ -4,13 +4,18 @@ import { useState, useEffect } from "react";
 
 function DoctorInfo() {
     const [doctor, setDoctor] = useState([]);
+    
+   
 
+    //setDoctor(JSON.parse(localStorage.getItem("accessToken")));
     useEffect(() => {
-        const doctor = JSON.parse(localStorage.getItem("accessToken"));
-        if (doctor) {
-            setDoctor(doctor);
-        }
-    }, []);
+        // const doctors = JSON.parse(localStorage.getItem("accessToken"));
+        // if (doctors) {
+        //     setDoctor(doctors);
+        //     console.log(doctor);
+        // }
+        setDoctor(JSON.parse(localStorage.getItem("accessToken")));
+    },[doctor]);
 
     return (
         <Container>

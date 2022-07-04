@@ -5,44 +5,43 @@ import axios from "axios";
 function ListUser() {
     const [users, setUsers] = useState([]);
 
-    const listUser = () => {
+    useEffect(() => {
         axios
-            .get("/get/all")
+            .get("http://localhost:8084/User/GetAllUserByRole/User")
             .then((res) => {
-                setUsers(res.data)
+                setUsers(res.data.data);
             })
             .catch((err) => console.log(err));
-    }
-
-    useEffect(() => {
-        listUser()
     }, []);
-    
+
     return (
         <Table striped bordered hover>
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Họ tên</th>
-                    <th>Tên đăng nhập</th>
-                    <th>Số điện thoại</th>
-                    <th>Email</th>
+                    <th>Giới tính</th>
                     <th>Ngày sinh</th>
                     <th>Địa chỉ</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>Tên đăng nhập</th>
                 </tr>
             </thead>
             <tbody>
-                    {users?.map((user) => (
-                        <tr key={user.id}>
-                            <td>{user.name}</td>
-                            <td>{user.username}</td>
-                            <td>{user.phoneNumber}</td>
-                            <td>{user.email}</td>
-                            <td>{user.dateOfBirth}</td>
-                            <td>{user.address}</td>
-                        </tr>
-                    ))}
-                </tbody>
+                {users?.map((user) => (
+                    <tr key={user.id}>
+                        <td>{user.id}</td>
+                        <td>{user.fullName}</td>
+                        <td>{user.sex ? "Nam" : "Nữ"}</td>
+                        <td>{user.birth}</td>
+                        <td>{user.address}</td>
+                        <td>{user.phoneNumber}</td>
+                        <td>{user.email}</td>
+                        <td>{user.username}</td>
+                    </tr>
+                ))}
+            </tbody>
         </Table>
     )
 }

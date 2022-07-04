@@ -4,21 +4,19 @@ import axios from "axios";
 import { useParams } from "react-router";
 
 function AddNewRecord() {
-    const baseURL = "https:localhost:3000/users"
     const { id } = useParams();
     const [user, setUser] = useState([]);
     const [symptom, setSymptom] = useState("");
     const [treatments, setTreatments] = useState("");
-    const [medicalCheckUpDate, setMedicalCheckUpDate] = useState("");
-
+    const doctor = JSON.parse(localStorage.getItem("accessToken")) ;
+    console.log(doctor.id);
     const handleSubmit = (e) => {
         e.preventDefault();
 
         axios
-            .post(`/add-doctor`, {
-                symptom: symptom,
-                treatments: treatments,
-                medicalCheckUpDate: medicalCheckUpDate
+            .post(`http://localhost:8084/Heath/${localStorage.getItem("timeId")}/${id}/${user.department.id}`, {
+                title: symptom,
+                detail: treatments
             })
             .then((res) => console.log(res))
             .catch((error) => console.log(error)
@@ -27,12 +25,15 @@ function AddNewRecord() {
 
     useEffect(() => {
         axios
-        .get(`${baseURL}/${id}`)
-        .then((res) => {
-            setUser(res.data)
-        })
-        .catch((error) => console.log(error));
-    }, [id]);
+            .get('http://localhost:8084/User/getDoctorById/' + doctor.id)
+            .then((res) => {
+                setUser(res.data.data);
+                console.log(res.data.data);
+            })
+            .catch((error) => console.log(error));
+        
+        
+    }, [doctor.id]);
 
     return (
         <Container>
@@ -52,12 +53,8 @@ function AddNewRecord() {
                                 <Form.Control as="textarea" rows={3} onChange={(e) => setSymptom(e.target.value)} />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Phương pháp điều trị</Form.Label>
-                                <Form.Control as="textarea" rows={3} onChange={(e) => setTreatments(e.target.value)}/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Ngày tái khám</Form.Label>
-                                <Form.Control type="date" onChange={(e) => setMedicalCheckUpDate(e.target.value)}/>
+                                <Form.Label>Chi tiết và phương pháp điều trị: </Form.Label>
+                                <Form.Control as="textarea" rows={3} onChange={(e) => setTreatments(e.target.value)} />
                             </Form.Group>
                             <Button variant="primary" type="submit">
                                 Xác nhận
