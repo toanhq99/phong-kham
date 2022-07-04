@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 
 function AppHeader() {
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
 
     let navigate = useNavigate();
 
@@ -66,7 +66,7 @@ function AppHeader() {
         }
         isLogin();
         haveName();
-    });
+    },[]);
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="light">

@@ -9,6 +9,7 @@ function UserInfo() {
         const user = JSON.parse(localStorage.getItem("accessToken"));
         if (user) {
             setUser(user);
+            console.log(user);
         }
     }, []);
 

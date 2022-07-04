@@ -14,7 +14,7 @@ function Admin() {
                         <Navbar.Brand href="/admin/list-users">Danh sách khách hàng</Navbar.Brand>
                         <Navbar.Brand href="/admin/list-doctors">Danh sách bác sĩ</Navbar.Brand>
                         <Navbar.Brand href="/admin/add-doctor">Thêm bác sĩ</Navbar.Brand>
-                        <Navbar.Brand href="/admin/list-services">Danh sách dịch vụ</Navbar.Brand>
+                        {/* <Navbar.Brand href="/admin/list-services">Danh sách dịch vụ</Navbar.Brand> */}
                     </Navbar>
                 </Col>
 
