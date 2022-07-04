@@ -20,7 +20,7 @@ function EditUserInfo() {
     const [dateOfBirthError, setDateOfBirthError] = useState("");
     const [addressError, setAddressError] = useState("");
 
-    let navigate = useNavigate;
+    let navigate = useNavigate();
 
     const [user, setUser] = useState([]);
 
@@ -115,7 +115,7 @@ function EditUserInfo() {
         handleValidation();
         console.log(username + password + name + phoneNumber + email + dateOfBirth + address);
         axios
-            .put(`http://localhost:8084/User/update/${user.id}`, {
+            .put('http://localhost:8084/User/update/' + user.id, {
                 username: username,
                 password: password,
                 fullName: name,
@@ -133,6 +133,7 @@ function EditUserInfo() {
                 } else {
                     alert("Cập nhật thông tin thành công!");
                     localStorage.setItem("accessToken", JSON.stringify(res.data.data));
+                    navigate("/user/info");
                 }
 
             })
