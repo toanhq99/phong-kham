@@ -14,7 +14,7 @@ function AppFooter() {
                     <Col md={6} className="">
                         <h5 className="title">Liên hệ với DevFast</h5>
                         <p>
-                            Địa chỉ: Trụ sở chính : Tầng 16 - Tòa nhà Việt A, Phố Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Thành Phố Hà Nội.
+                            Địa chỉ: Tầng 16 - Tòa nhà Việt A, Phố Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Thành Phố Hà Nội.
                         </p>
                     </Col>
                     <Col md={6} >
