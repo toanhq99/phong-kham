@@ -1,73 +1,49 @@
-import { Container, Card } from "react-bootstrap"
+import { Container, Card,Button } from "react-bootstrap"
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"
 import axios from "axios";
 
 function UserCalendar() {
-    const [appointment, setAppointment] = useState([]);
-    const appointment1 = [
-        {
-            id: 1,
-            appointmentHour: "7:00",
-            appointmentDay: "11/11/2022",
-            content: "lich kham tai mui hong",
-            status: true
-        },
-        {
-            id: 2,
-            appointmentHour: "7:00",
-            appointmentDay: "11/11/2022",
-            content: "lich kham tai mui hong",
-            status: false
-        },
-        {
-            id: 3,
-            appointmentHour: "7:00",
-            appointmentDay: "11/11/2022",
-            content: "lich kham tai mui hong",
-            status: true
-        },
+    const [calendar, setCalendar] = useState([]);
 
-    ];
-
-    const isStatus = () => {
-        if (appointment1.status === true) {
-            return (
-                <Card bg="sucess" text="white" className="text-center justify-content-center" style={{ width: '7rem', height: '3rem' }}>
-                    <Card.Text>Đã đặt</Card.Text>
-                </Card>
-            )
-        } else {
-            <Card bg="danger" text="white" className="text-center justify-content-center" style={{ width: '7rem', height: '3rem' }}>
-                <Card.Text>Đã hủy</Card.Text>
-            </Card>
-        }
-    }
+    const doctor = JSON.parse(localStorage.getItem("accessToken"));
 
     useEffect(() => {
         axios
-            .get(`/user/calendar/1`, {
-
+            .get('http://localhost:8084/TimeOder/getAllTimeOderByUserId/' + doctor.id)
+            .then((res) => {
+                setCalendar(res.data.data);
+                console.log(res.data.data);
             })
-            .then(res => setAppointment(res.data))
-            .catch(error => console.log(error));
-        
-        isStatus();
-    }, []);
+            .catch((err) => console.log(err));
+    },[doctor.id]);
 
     return (
-        <Container className="w-50 h-100 justify-content-center d-flex position-relative flex-column mt-2">
-            <h2 className="mx-5 text-center">Lịch sử đặt khám</h2>
-            {appointment1?.map((item) => (
-                <Card key={item.id} className="mt-3">
-                    <Card.Header>{item.appointmentHour}, {item.appointmentDay}</Card.Header>
-                    <Card.Body>
-                        <Card.Text>
-                            {item.content}
-                        </Card.Text>
-                        {isStatus()}
-                    </Card.Body>
-                </Card>
-            ))}
+        <Container>
+            <div className="mt-4 text-center">
+                <h2>Lịch khám hôm nay</h2>
+            </div>
+            <Container className="mt-4 w-75 h-25">
+                {calendar?.map((cal) => (
+                    <Card key={cal.id} className="mt-3">
+                        <Card.Header as="h5">{cal.time}</Card.Header>
+                        <Card.Body>
+                            <Card.Title>Khách hàng: {cal.user.fullName}</Card.Title>
+                            <Card.Text>
+                                Giờ khám: {cal.time}
+                            </Card.Text>
+                            <Card.Text>
+                                Triệu chứng: {cal.symptom}
+                            </Card.Text>
+                            <Link to={'/user/health/' + cal.user.id}>
+                                <Button onClick={localStorage.setItem("timeId", cal.id)}>
+                                    Xem hồ sơ bệnh án
+                                </Button>
+                            </Link>
+                        </Card.Body>
+                    </Card>
+                ))}
+            </Container>
         </Container>
     )
 }
