@@ -1,43 +1,46 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
+import {
+    AiOutlineMail,
+    AiFillFacebook,
+    AiFillTwitterSquare
+} from "react-icons/ai";
 
 function AppFooter() {
     return (
-        <footer  className="font-small pt-4 mt-4 bg-footer">
-            <Container fluid className="text-center text-md-left">
-                <Row>
-                    <Col md="6">
-                        <h5 className="title">Footer Content</h5>
+        <Navbar className="d-block" expand="lg" bg="light">
+            <Container fluid className="text-center justify-content-center mt-4">
+                <Row className="w-100">
+                    <Col md={6} className="">
+                        <h5 className="title">Liên hệ với DevFast</h5>
                         <p>
-                            Here you can use rows and columns here to organize your footer
-                            content.
+                            Địa chỉ: Trụ sở chính : Tầng 16 - Tòa nhà Việt A, Phố Duy Tân, Phường Dịch Vọng Hậu, Quận Cầu Giấy, Thành Phố Hà Nội.
                         </p>
                     </Col>
-                    <Col md="6">
-                        <h5 className="title">Links</h5>
-                        <ul>
-                            <li className="list-unstyled">
-                                <a href="#!">Link 1</a>
-                            </li>
-                            <li className="list-unstyled">
-                                <a href="#!">Link 2</a>
-                            </li>
-                            <li className="list-unstyled">
-                                <a href="#!">Link 3</a>
-                            </li>
-                            <li className="list-unstyled">
-                                <a href="#!">Link 4</a>
-                            </li>
+                    <Col md={6} >
+                        <h5 className="title">Liên kết</h5>
+                        <ul className="">
+                            <Col md={{ span: 6, offset: 5 }} className="text-start">
+                                <li className="list-unstyled">
+                                    <AiOutlineMail /><a href="#!" className="text-decoration-none">{" "}Gmail</a>
+                                </li>
+                                <li className="list-unstyled">
+                                    <AiFillFacebook /><a href="#!" className="text-decoration-none">{" "}Facebook</a>
+                                </li>
+                                <li className="list-unstyled">
+                                    <AiFillTwitterSquare /><a href="#!" className="text-decoration-none">{" "}Twitter</a>
+                                </li>
+                            </Col>
                         </ul>
                     </Col>
                 </Row>
             </Container>
             <div className="footer-copyright text-center py-3">
                 <Container fluid>
-                    &copy; {new Date().getFullYear()} Copyright: <a href="https://www.mdbootstrap.com"> MDBootstrap.com </a>
+                    &copy; {new Date().getFullYear()} Copyright: <a href="https://devfast.us" className="text-decoration-none"> Devfast.us </a>
                 </Container>
             </div>
-        </footer>
+        </Navbar>
     )
 }
 

@@ -34,7 +34,7 @@
 }
 
 .bg-footer {
-    background: rgb(72, 226, 72);
+    background: rgba(var(--bs-light-rgb), var(--bs-bg-opacity))!important;
 }
 
 .logo-img {
